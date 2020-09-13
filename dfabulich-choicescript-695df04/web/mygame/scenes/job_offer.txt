@@ -1,0 +1,27 @@
+*if skip
+	*finish
+It’s not even 9 o’clock, but you know Bobby usually leaves for work a lot earlier. You listen to your voicemail while drinking coffee and eating cereal.
+
+“Pumpkin, it’s Mom. You’re probably wondering what that dream was all about, aren’t you? I know most people your age don’t really believe in woo-woo New Age hocus-pocus occult stuff. But in your dream, you just made a choice to accept the family gift of divination. Sorry I can’t talk long; I’m supposed to be at a silent meditation retreat all month and I’ll be in trouble if they catch me blabbing. I’m so proud of you, Pumpkin; I knew you’d have the gift. Better download that Virtual Teacup app, in case you need it for the new job.”
+
+*page_break
+[i]Divination? How did Mom know about the dream? And I didn’t even tell her about the interview.[/i]
+
+Your phone rings again. This time, it’s the recruiter from Ubiquity. You stand up, brush the breadcrumbs off your lap, and try to sound professional and decisive, instead of confused. 
+
+“Hello, this is Casey Morganson.”
+
+*page_break
+“$!{pMr}. Morganson, we’re happy to extend you an offer to join Ubiquity. If you accept, as with all our new employees, you’ll be given a contract for a six month trial probationary period and assigned to a team where you can make a significant contribution to our mission. We’ve sent you all the details, and hope to see you next Monday.”
+
+[i]Figuring out the family gift can wait. I’ve finally got a job![/i]
+
+*page_break
+But before your first day on the job, you check out that Virtual Teacup app. 
+
+[b]Virtual Teacup[/b] is like having a nice pot of tea in your pocket, without any danger of boiling water in your pants! Go straight to reading tea leaves without the fuss of brewing and drinking actual tea. Simply declare your question, swirl your virtual teacup, dump out the dregs of virtual tea, and the answers will be revealed though shapes appearing in the remaining leaves. 
+
+At least it's a cheap download.
+
+[i]Why not listen to Mom. A little cosmic help could come in handy![/i]
+*finish

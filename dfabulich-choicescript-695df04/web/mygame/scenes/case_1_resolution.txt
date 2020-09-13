@@ -1,0 +1,209 @@
+*if skip
+	*finish
+You get back to the conference room at the same time as both Rene and Margot. 
+
+“Team’s all here. Let’s get started, then, so we aren’t here all night, trying to figure out why people were setting off SEKA’s alarms.” Margot says.
+*page_break
+Rene quickly opens ${ihis} laptop. “I’m going to log into SEKA’s artificial intelligence retraining module. For each person who was an investigation target, we can let SEKA know whether it made a correct decision to flag them as running an illicit side business, or otherwise needing attention. If SEKA was wrong, we can also explain what the person was really doing, so the artificial intelligence can get smarter about the range of employees at Ubiquity.”
+
+“Casey, you can go first. Tell us your decisions in alphabetical order, and we’ll quickly double-check them with the information in the case records. If we have to, we can also query SEKA for more information.” 
+
+You stand up and start reviewing your decisions.
+*page_break
+*gosub Zenina
+*page_break
+*gosub Jason
+*page_break
+*gosub Van
+*page_break
+*gosub Tonya
+*page_break
+*gosub Monica
+*page_break
+*gosub wrapup
+
+*label Zenina
+*if Zenina_choice = 1
+	Checking out Zenina B, I got the sense that she is running an illicit side business, probably selling blessings and prayers for a cult.
+	
+	Margot glances through Zenina’s binder and frowns at you. “I don’t see that at all. What was the basis of your decision?”
+	*line_break
+	“I…that was just what I thought.”
+	*line_break
+	“You’re going to have to do better than wild guesses.”
+	*return
+*if Zenina_choice = 2
+	Checking out Zenina B, she runs her church’s website and sometimes organizes for their prayer chain. It was worth a look to check, but I don’t think she’s using a lot of company time or resources.
+
+	“Alright, I think SEKA should have been able to figure that out itself, but I agree with your conclusion about what Zenina’s been doing,” Margot says.
+	*return
+*if Zenina_choice = 3
+	Checking out Zenina B, the only odd thing she’s been doing is running her church’s website and taking a turn organizing for their prayer chain. It’s not much company time or resources, and I don’t think SEKA should flag people like this.
+
+	“I agree,” Margot says.
+	*return
+*if Zenina_choice = 4
+	Checking out Zenina B, she seemed to have completely normal behavior, and I have no idea why SEKA flagged her.
+	
+	“Maybe because she’s running her church’s website and being the prayer chain organizer,” Margot says. “I agree that SEKA shouldn’t have suspected her of running an illicit business, but her behavior wasn’t totally normal either. You’ve got to look a little harder at these people.”
+	*return
+
+*label Jason
+*if Jason_choice = 1
+	I’m pretty sure that Jason L is running an illicit business, probably gold farming in an online game.
+	
+	Margot gives you a look. “I don’t see that at all. How did you draw that conclusion?
+	*line_break
+	“He just seems like the type.”
+	*line_break
+	“You’re going to have to be more evidence-based here.”
+	*return
+*if Jason_choice = 2
+	Jason L has a problem that needs some followup. He’s getting dozens of wrong-number phone calls every day because his phone number is very similar to Ubiquity’s central directory number. This is upsetting him and causing tensions in his group. I can see why SEKA would flag the situation, though there’s no side business going on.
+
+	Margot closes Jason’s binder. “That sounds right,” she says.
+	*return
+*if Jason_choice = 3
+	Jason L has a strange problem where he’s dozens of wrong-number phone calls every day because his phone number is very similar to Ubiquity’s central directory number. SEKA shouldn’t have flagged him, since there’s no illicit side business going on.
+
+	“Alright, I think it’s good when SEKA flags these situations that Ubiquity should try to fix, but you’re right that Jason isn’t running a problematic side business.
+	*return
+*if Jason_choice = 4
+	Jason L is just a normal acting guy, and I don’t know why SEKA flagged him.
+
+	Margot closes Jason’s binder. “I’d say it was because he’s getting so many wrong-number phone calls from outside callers every day, and that we need to do something so it’s not so easy for people to reach him by mistake when they misdial Ubiquity’s central directory number. He’s not running a pirate company, but his behavior pattern is not normal." 
+	*line_break
+	"Dig deeper when you investigate these people.”
+	*return
+
+*label Van
+*if Van_choice = 1
+	From what I can tell, SEKA got it right about Van. He’s running a sort of gambling prediction market about geo-political events, using company resources, and trying to get coworkers to participate.
+	
+	“That’s a serious allegation,” Margot says, “but your evidence is clear. We cannot have Ubiquity employees running a gambling site and taking bets on political assassinations. His manager will need to have a long talk with Van.”
+	
+	“It might be impossible to have a short talk with Van,” you note.
+	*return
+*if Van_choice = 2
+	From what I can tell, Van’s not doing anything really wrong, though his prediction market website is something Ubiquity needs to deal with.
+
+	“Actually, running a gambling site at work is not okay,” Margo says. “Especially when someone pesters their coworkers to join a prediction site where people bet on terrorist attacks." 
+	*line_break
+	"You need to use a little more common sense when you interpret the evidence.”
+	*return
+*if Van_choice = 3
+	From what I can tell, Van’s a quirky guy, but SEKA was wrong to think someone needed to intervene with Van.
+
+	Margot slams the binder shut. “Casey, the guy’s running a gambling prediction market with Ubiquity company servers and trying to get his coworkers to place bets on political assassinations and terrorist attacks!" 
+	*line_break
+	"No, that is not okay. Pay more attention!”
+	*return
+*if Van_choice = 4
+	From what I can tell, Van’s just another normal employee, and I don’t know why SEKA flagged him.
+
+	Margot slams the binder shut. “Casey, the guy’s running a gambling prediction market with company servers and trying to get his coworkers to place bets on political assassinations and terrorist attacks. If people found out, SEKA would probably get investigated by the Federal government."
+	*line_break
+	"I know this is your first day, but you need to pay more attention!”
+	*return
+
+*label Tonya
+*if Tonya_choice = 1
+	Tonya’s up to no good, and SEKA was right to flag her. She’s been running a video blog and fan business, which Ubiquity should shut down.
+
+	“Excuse me?” Margot hisses. “Obviously, she used to run a video blog, but that was years ago. Now, it just looks like she’s got some overly enthusiastic former fans, and Ubiquity needs to help her deal with them."
+	*line_break
+	"I hope you can do better than this.”
+	*return
+*if Tonya_choice = 2
+	Tonya’s dealing with a strange situation, and SEKA was right to flag it as a problem for Ubiquity to deal with. Some of the former fan from her old LEGO blog have tracked her down, and now she’s getting pestered with LEGO questions. Ubiquity might be able to help find a way to deal with them.
+
+	“Exactly what I would say,” Margot nods.
+	*return
+*if Tonya_choice = 3
+	Tonya’s not an average employee, because she has a group of obsessed fans from her old LEGO video blogging days, but there’s no reason that SEKA should have suggested that someone look into her situation.
+
+	“She’s not doing anything wrong, but Ubiquity should help her stave off these fans,” Margot says. “So I don’t mind if SEKA alerts us to this kind of problem.”
+	*return
+*if Tonya_choice = 4
+	Tonya’s just a normal employee, and I don’t know why SEKA flagged her.
+
+	“Are you serious?” Margot demands. “Tonya is a great employee who’s being hassled by fans from her old LEGO blog. Ubiquity needs to help her deal with them."
+	*line_break
+	"I hope you can do better than this.”
+	*return
+
+*label Monica
+*if Monica_choice = 1
+	Based on my investigation, SEKA was right about Monica. She’s been running an Etsy business at work, and it’s a big distraction. Even if Ubiquity doesn’t do anything, she’ll probably quit soon.
+
+	“What is she selling?” Margot asks.
+	*line_break
+	“She makes these customized stuffed animals that look like their owners.”
+	*line_break
+	“At least it’s not sex or politics,” Margot notes. “Ubiquity needs to avoid any publicity related to sex and politics.”
+	*return
+*if Monica_choice = 2
+	Based on my investigation, SEKA was right to flag Monica’s behavior. She’s been distracted from work by her Etsy business, and she’s about ready to quit her job.
+
+	“What is she selling?” Margot asks.
+	*line_break
+	“She makes these customized stuffed animals that look like their owners.”
+	*line_break
+	“Not too scandalous, but Ubiquity doesn’t want to pay employees to run side businesses at work,” Margot nods.
+	*return
+*if Monica_choice = 3
+	Based on my investigation, SEKA shouldn’t have flagged Monica’s behavior. Her stuffed animal situation is unusual, but Ubiquity doesn’t need to do anything about it.
+
+	“I disagree,” Margot says. “Employees are not allowed to run side businesses from work, and an Etsy store counts as a side business." 
+	*line_break
+	"Think a little more about these situations.”
+	*return
+*if Monica_choice = 4
+	Based on my investigation, Monica is pretty much a typical employee, and I don’t know why SEKA flagged her.
+
+	Margo slaps the table. “Wake up! Just from looking through her binder, I can tell there’s something going on. She’s using her office as a stuffed animal warehouse, and running an Etsy business from work." 
+	*line_break
+	"You need to pay more attention!”
+	*return
+
+*label wrapup
+Finally, you’re done presenting your decisions. 
+
+Next its Rene’s turn, and Margot mostly agrees with ${ihis} assessments. $!{ihis} dimples and charming smile seem to have worked with everyone ${ihe} talked to. Both the subjects of his investigations and their coworkers cooperated with ${ihim}. 
+
+Margot’s investigation tactics seem to mostly involve searching logs and data records, supplemented by an occasional phone call. She explains that since she’s worked at Ubiquity so long, she already knows people in most departments. She seems to have a sixth sense for zeroing in on the real reasons behind odd behaviors.
+
+It’s nearly 6pm by the time you’ve all agreed on the fifteen investigations from today.
+*page_break
+*if boss_regard > 4
+	Margot looks tired, but at least she’s not frowning. “We got a lot done today. Rene, nice job. Casey, I’m glad you’re on the team. See you tomorrow.”
+	*goto pickup
+*elseif boss_regard > 2
+	Margot looks tired. “We got a lot done today. Rene, nice job. Casey, not bad for the first day. See you tomorrow.”
+	*goto pickup
+*else
+	Margot looks tired, and she’s frowning. “We survived a lot of investigations today. Rene, nice job." 
+	
+	"Casey, you need to get with the program. I know you’ve been thrown into the deep end of the pool, so I hope you can swim. If you’re unclear on what is and is not acceptable employee behavior here at Ubiquity, I suggest you read that company handbook they sent you with your job offer. See you tomorrow.”
+	*goto pickup
+
+*label pickup
+*page_break
+After Margot leaves, Rene stretches and sighs. “That must have been a long first day for you. Want to grab dinner at The Fancy Cat? My treat, since we were all too busy to take you to lunch today.
+
+[i]The Fancy Cat? Isn’t that the new super expensive ultra trendy restaurant where no one who’s not in the 1% can get a reservation?[/i]
+*choice
+	#No thanks, I’ve got a hot date with a frozen burrito.
+		*set pickup_choice 1
+		*finish
+	#Why don’t you come back to my place. My housemate and I are grilling burgers tonight. 
+		*set pickup_choice 2
+		*finish
+	#Thanks, that place sounds amazing.
+		*set pickup_choice 3
+		*set resist_colleague -2
+		*finish
+	#I’d be up for dinner, but only if we split the check. So maybe we should go to the pho shop down the street.
+		*set pickup_choice 4
+		*set resist_colleague +1
+		*finish

@@ -1,0 +1,126 @@
+*if skip
+	*finish
+*if pickup_choice = 1
+	“I can’t let you just go home thinking about how overwhelming the job is,” Rene insists. 
+	
+	“You’d talk yourself out of coming back, and then where would that leave us? As a favor to the ${iguy} who would be left as Margot’s only minion if you quit, I’m begging you to give me a chance to help end your day with a something more delicious than microwave burritos.”
+
+	“Since you put it that way, I can’t say no.”
+
+	“It will be the highlight of my week. I shall be in your debt.”
+	*goto dinner
+*if pickup_choice = 4
+	“I shan’t argue with my new and esteemed colleague,” Rene says.
+	*goto dinner
+*if pickup_choice = 3
+	*goto dinner
+*if pickup_choice = 2
+	You text Bobby to let ${ehim} know that Rene will be coming over for burgers. When you get home, ${ehe} and Jamie have the grill already fired up and the food ready to go. Rene presents them with a bottle of wine. 
+	
+	[i]Has ${ihe} been carrying that around in ${ihis} bag all day? I wonder if ${ihe} can pull a rabbit out of someone’s ear?[/i]
+	*page_break
+	Bobby and Rene take charge of the grilling, and Jamie pours the wine.
+
+	“How did your first day go? Which group did they assign you to?” Jamie asks. 
+	*choice
+		#"I’m on the Taskforce for Improving Efficiency. There’s a lot to learn, but I think it’ll be fun."
+			
+			“That sounds like a cover story for one of Ubiquity’s secret projects,” Jamie laughs. 
+			
+			“They have a lot of them. Well, don’t tell me anything you’re not supposed to say, but if you need help, let me know.”
+			*goto grill
+		#"I’m working with Rene and Margot Lyles, looking at some internal company processes."
+			“Oh, that must be one of Ubiquity’s secret projects,” Jamie says. 
+			
+			“Margot ends up on most of them. She’s really smart. I’m kind of surprised she hasn’t made vice president yet.”
+			*goto grill
+		#"It’s another one of those secret projects, so I can’t say much."
+		
+			“Sometimes I think half of Ubiquity is working on secret projects,” Jamie says. 
+			
+			“Well, don’t tell me anything you’re not supposed to say, but if you need help, let me know.”
+			*goto grill
+
+*label grill	
+*page_break		
+The burgers come out perfect. Rene gets everyone laughing when ${ihe} tries to juggle the ketchup, mustard, and a burger, taking bites from the moving target. After the party breaks up, you walk ${ihim} out to ${ihis} car.
+
+“You know, Margot really understands how much SEKA can help Ubiquity. It’s not just about finding people doing something wrong. It’s about getting Ubiquity to notice when and where it needs to give its employees a hand.”
+
+“You mean things like helping Tonya stave off obsessed fans, or dealing with Jason’s wrong phone number calls.”
+*line_break
+“Exactly. There’s so much good that SEKA can do for Ubiquity, if we can just convince management to be patient while we’re adjusting the artificial intelligence. I’m afraid they expect SEKA to work perfectly as soon as it’s installed, which is completely impossible!”
+*line_break
+“Yeah, people can be impatient.”
+*line_break
+“SEKA can really make Ubiquity better, but it needs a training period to understand Ubiquity as an organization. Look, Casey, can Margot and I count on you to help?”
+*goto query
+
+*label query
+*page_break
+*if resist_colleague < 2
+	You’re touched by ${ihis} dedication to helping Ubiquity, and ${ihis} loyalty to Margot.
+
+	“Count me in.” 
+	*goto goodbye
+*elseif resist_colleague > 0 
+	$!{ihe} seems so earnest about helping Ubiquity.
+
+	“I’ll do what I can.” 
+	*goto goodbye
+*else
+	[i]I guess ${ihe}’ll be out of a job if Ubiquity decides that buying SEKA was a mistake.
+
+	“I’m certainly not planning to quit.” 
+*if boss_regard < 3
+
+	“Though I’m not sure Margot won’t just fire me.” 
+	
+	“She can seem like a rather demanding boss, but she’ll at least keep you for the six month trial period. By that time, she’ll probably love you. Either that, or she’ll have gotten poached from Ubiquity by EEE, and you won’t have to worry what she thinks!”
+	*goto goodbye
+
+*label goodbye
+
+*if pickup_choice = 2
+	*goto grill_goodbye
+*else
+	*goto dinner_goodbye
+
+*label grill_goodbye
+Rene clasps your shoulder. “I knew I could count on you.” 
+
+$!{ihe} gets into his car and rolls down the window. 
+
+“With all three of us working together, I’m sure we can keep Ubiquity management from killing the SEKA deployment project!”
+*finish
+
+*label dinner
+*page_break		
+The restaurant is crowded, but you and Rene are ushered to seats at a table in the corner.
+
+“It must be interesting working with all the different customer companies to get SEKA trained up right,” you say.
+
+“It’s so different at each customer site. Margot, and Ubiquity, have been great. She really understand the SEKA system, and why it’s necessary to do a lot of manual investigation in the beginning, to tune the artificial intelligence. I just hope she doesn’t quit before the SEKA rollout project is finished.”
+*line_break
+“How long does the tuning take?
+*line_break
+“With a large organization like Ubiquity, a place that has a lot of different types of products and departments, it could take up to six months. But the pace of investigations is much higher right at the beginning, and the last couple months are more like fine tuning and carrying out a few followup recommendations from SEKA. Most companies find that the investigation team naturally transitions into a problem solving team.
+*line_break
+“You mean doing things like helping Tonya stave off obsessed fans, or dealing with Jason’s wrong phone number calls.”
+*line_break
+“Exactly - by the time Ubiquity can trust SEKA to identify the rare employees who are doing something wrong, Ubiquity can also trust SEKA to flag problem situations that need intervention.”
+*page_break
+Your food arrives, and the entree you ordered turns out to be an unusual bowl of noodles. There’s a mixture of thick and thin noodles of different colors, and there are strange things in the soup that might be vegetables or might be animal parts. You try not to slurp or splash too much.
+
+“There’s so much good that SEKA can do for Ubiquity, if Margot and I can just convince management to be patient while we’re adjusting the artificial intelligence. I’m afraid they expect SEKA to work perfectly as soon as it’s installed, which is completely impossible!”
+
+“Yeah, people expect to be living in the future with smart software systems.”
+
+“SEKA really is amazingly smart, but it just needs a training period to understand a new customer organization. Casey, can we count on you to help?”
+*goto query
+
+*label dinner_goodbye
+Rene refills your glass. “I knew I could count on you.” $!{ihe} clinks ${ihis} glass against yours.
+
+“With all three of us working together, I’m sure we can keep Ubiquity management from killing the SEKA deployment project!”
+*finish

@@ -1,0 +1,25 @@
+You feel yourself drifting off to sleep. Your future stretches in front of you like a vast forest of question marks, obscured by fog. 
+
+[i]Life’s tricky, even when you use divination.[/i] 
+
+You’re paddling through a lake. Brightly colored frogs sit on giant lily pads croaking loudly. Out of their gaping mouths fly a swarm of paper airplanes, which zoom around your head before falling into your canoe. You unfold one of the airplanes.
+
+*if boss_regard > 6
+	Pumpkin, I dreamed you were doing really well with your new job! We both know that seeing signs won’t always reveal the answers. It keeps life interesting that way. Best wishes on your next adventures - I can’t wait to hear the details. 
+	*goto wake
+*elseif boss_regard > 4
+	Pumpkin, I dreamed you were doing pretty well with your new job! We both know that seeing signs won’t always reveal the answers. It keeps life interesting that way. Best wishes on your next adventures - I can’t wait to hear the details. 
+	*goto wake
+*else
+	Pumpkin, I dreamed you were having a tough time with your new job. You’ve probably figured out that seeing signs won’t always show you the right answers. If it was that easy all the time, life wouldn’t be much of an adventure. Keep your chin up - I’m rooting for you. 
+	*if housemate_relationship <=2
+		And don’t worry, you can always stay with me until you find another apartment.
+		*goto wake
+	*goto wake
+*label wake
+*set dream_5_description "[b]Dream #5[/b] I was in a canoe on a lake, with neon frogs, and I got a paper airplane note from Mom. I wonder what she would have done with the Ubiquity job." 
+*set show_dream_5 true	
+*page_break
+You wake up and look around expecting frogs, but all you see are Mischief’s eyes glowing in the dark.
+
+*ending

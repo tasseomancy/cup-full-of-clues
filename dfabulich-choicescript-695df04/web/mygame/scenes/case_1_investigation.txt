@@ -1,0 +1,1414 @@
+*if skip
+	*finish
+
+*temp actions_left
+*set actions_left 10
+*temp person_total 
+*set person_total 0
+*temp see_completion
+*set see_completion false
+*temp worse_score
+*set worse_score 0
+*temp worse_person
+*set worse_person "None"
+*temp worse_choice 
+*set worse_choice "None"
+*comment  For each person, there will be 4 possible things to do, for a total of 20 possible things. 
+*comment If you read all the files or did Divination, you can do a total of 10 things now. 
+*comment If you picked randomly, you can do a total of 12 things now. 
+*comment The 4 things per person will be: (1) Divination (2) Talk to person (3) Talk to coworkers (4) Flip through archived records)
+*comment go through the people in order until you run out of time.
+
+You cross your fingers and begin your investigations.
+*if did_random
+	*set actions_left +2
+
+*temp show1 true
+*temp show2 true
+*temp show3 true
+*temp stat_check
+*label investigate
+*page_break
+*comment check total
+*if actions_left = 0
+	*goto actions_done
+*if (actions_left = 6) and show1
+	*set show1 false
+	Time flies! You’ve spent 2 hours so far, there's only 3 hours left to finish your investigations. 
+	*if person_total < 2
+		Better get going! You’ve got five people to investigate by 3pm! 
+		*goto continue_investigate
+	*else
+		Making good progress - you’re on track to finish all five investigations by 3pm!
+		*goto continue_investigate
+*if (actions_left = 4) and show2
+	*set show2 false
+	It’s clear that you’re not going to have time for lunch today, but you press on. It would be great to impress your new boss on your first day!
+	*goto continue_investigate
+*if (actions_left = 2) and show3
+	*set show3 false
+	You’ve got one more hour before 3pm to make up your mind about the five people on your list. You wonder what Rene and Margot found out!
+	*goto continue_investigate
+
+*label continue_investigate		
+*if person_total = 0
+	*gosub {investigate_1}
+	*goto investigate
+*if person_total = 1
+	*gosub {investigate_2}
+	*goto investigate
+*if person_total = 2
+	*gosub {investigate_3}
+	*goto investigate
+*if person_total = 3
+	*gosub {investigate_4}
+	*goto investigate
+*if person_total = 4
+	*gosub {investigate_5}
+	*goto investigate
+*if person_total = 5
+	*goto people_done
+
+*label finish_reporting
+*temp target_report
+*if person_total = 0
+	*set target_report investigate_1&"_report"
+	*gosub {target_report}
+	*set person_total +1
+	Your report on ${investigate_1} is submitted!
+	*goto next_person_1
+*label next_person_1
+*if person_total = 1
+	*set target_report investigate_2&"_report"
+	*gosub {target_report}
+	*set person_total +1
+	Your report on ${investigate_2} is submitted!
+	*goto next_person_2
+*label next_person_2
+*if person_total = 2
+	*set target_report investigate_3&"_report"
+	*gosub {target_report}
+	*set person_total +1
+	Your report on ${investigate_3} is submitted!
+	*goto next_person_3
+*label next_person_3
+*if person_total = 3
+	*set target_report investigate_4&"_report"
+	*gosub {target_report}
+	*set person_total +1
+	Your report on ${investigate_4} is submitted!
+	*goto next_person_4
+*label next_person_4
+*if person_total = 4
+	*set target_report investigate_5&"_report"
+	*gosub {target_report}
+	*set person_total +1
+	Your report on ${investigate_5} is submitted!
+	*return
+
+*label Jason
+*comment Jason L
+*if not(see_completion)
+	*page_break
+	It’s a short walk to Jason L’s work area, where most of the software engineers for Ubiquity’s cloud services division sit. From the case records, you remember that he’s the one who shows up late with a bad temper. A few people are standing around the water cooler, and one guy stands in Jason’s doorway talking. 
+	*gosub Jason_action
+	*return
+*else
+	*gosub Jason_action
+	*return
+	
+*label Jason_action
+*page_break
+*if not(see_completion)
+	What do you do first to investigate Jason?
+	*goto Jason_choice
+*else
+	What do you do next?
+	*goto Jason_choice
+*label Jason_choice
+*choice
+	*disable_reuse #Approach him directly.
+		*set actions_left -1
+		*gosub Jason_interact
+		*set see_completion true
+		*return
+	*disable_reuse #Talk to his coworkers about him.
+		*set actions_left -1
+		*gosub Jason_rumor
+		*set see_completion true
+		*return
+	*disable_reuse #Flip through the binder for more archived records.
+		*set actions_left -1
+		*gosub Jason_history
+		*set see_completion true
+		*return
+	*disable_reuse #Perform divination.
+		*set actions_left -1
+		*gosub Jason_divination
+		*set see_completion true
+		*return
+	*if see_completion 
+		#Complete your report on him.
+			*set person_total +1
+			*gosub Jason_report
+			*set see_completion false
+			Your report on Jason is submitted!
+			*return
+
+*label Jason_interact
+You knock on Jason’s doorframe and introduce yourself. How do you explain your errand?
+*set stat_check interaction + diligence
+*choice
+	#You were recommended to me as an example of a high achieving engineer. Do you have time to talk about how you succeed?
+		*gosub Jason_talk
+		*return
+	#I’m trying to understand more about how software engineers at Ubiquity work. Do you have time to talk?
+		*gosub Jason_talk
+		*return
+	#Ubiquity is studying productivity, and I need to do a quick assessment with you.
+		*if stat_check > 3
+			*gosub Jason_talk
+			*return
+		*else
+			*gosub Jason_refuse
+			*return
+	#You don’t know me, but I’m hiding from an annoying coworker. Can I sit in your office for a while?
+		*gosub Jason_refuse
+		*return
+
+*label Jason_talk	
+Jason blinks and nods. “Okay, I’ve got a few minutes. What do you want to know?”
+
+“A lot of times in large companies, people are hampered in getting things done. Are there some things you notice about the work environment, people you work with, or company rules that hurt productivity?”
+*line_break
+“We have too many boring meetings. And some of the my coworkers aren’t very good programmers.”
+*line_break
+“Have you noticed any issues that impact you more than other people? Or things that you do, but other people don’t do?”
+*line_break
+“I’ve been complaining about this since I started working here. Every day, I get a ton of wrong number phone calls. It’s really disruptive, but my manager won’t let me disconnect my phone.”
+*return
+
+*label Jason_refuse
+Jason looks at the clock. “Sorry, this isn’t a good time, I’ve got a deadline today.”
+*return
+
+*label Jason_rumor
+After the coworker finishes his conversation with Jason, you follow him to his office. How do you explain your errand?
+*set stat_check rumor + diligence
+*choice
+	#You were recommended to me as an example of someone who understand how things work in this group. Do you have time to explain it?
+		*if stat_check > 3
+			*gosub Jason_rumor_talk
+			*return
+		*else
+			*gosub Jason_rumor_mid
+			*return
+	#I’m thinking of transferring, and wanted to know more about your group. Do you have time to talk?
+		*if stat_check > 3
+			*gosub Jason_rumor_talk
+			*return
+		*else
+			*gosub Jason_rumor_mid
+			*return
+	#Ubiquity is studying productivity, and I need to do a quick assessment with you.
+		*gosub Jason_rumor_refuse
+		*return
+	#I’ve been a little worried about one of your coworkers. Can I ask you some questions?
+		*if stat_check > 3
+			*gosub Jason_rumor_talk
+			*return
+		*else
+			*gosub Jason_rumor_refuse
+			*return
+			
+*label Jason_rumor_talk
+“Sure, I’ve got a minute if you can be quick. What can I tell you?”
+*line_break
+“I was wondering if you ever noticed anything unusual about Jason’s work habits.”
+*line_break
+“He’s kind of paranoid, but he gets it wrong. Like, he thinks one of us has been giving out his phone number as a prank. But what I think is going on is his number is just one digit off from the Ubiquity main line. People think they’ve called directory assistance and ask Jason if they can speak to so-and-so, and it pisses him off.”
+*return
+
+*label Jason_rumor_mid
+“He gets in late a lot, and he’s kind of paranoid. He always thinks random things that happen are because someone’s persecuting him. I mean, stuff like wrong number phone calls.”
+*return
+
+*label Jason_rumor_refuse
+He looks at the clock. “I’d like to help, but this isn’t a great time, I’ve got a deadline today.”
+*return
+
+*label Jason_history
+*page_break
+*set stat_check history + diligence
+You see several letters from Jason complaining about his office space, coworkers, and general working conditions.
+
+*if stat_check > 3
+	“I am constantly interrupted by wrong number phone calls. On average, I get twenty calls per day asking for people I don’t even know. I think a coworker must have circulated my number as a prank.”
+	*return
+*else
+	“I told my manager about the phone problem, but she hasn’t done anything about it. My coworkers are all incompetent and spend their time pranking me instead of doing their work.”
+	*return
+
+*label Jason_divination
+*page_break
+*set stat_check soul
+You swirl and dump your Virtual Teacup, and the leaves clump into the shape of a perched crow.
+
+*if stat_check > 3 
+	[i]Right, he’s someone who complains and people don’t like, but who isn’t actually a problem.[/i]
+	*return
+*else
+	[i]Crows are usually a sign that you’ll know what to do, so I guess I’ll just go with my instinct on Jason.[/i]
+	*return
+*return
+
+*label Jason_report
+What do you decide about Jason L?
+*choice
+	#He is doing something bad, and SEKA was right to be suspicious.
+		*set Jason_choice 1
+		*set boss_regard -1
+		*if worse_score < 1
+			*set worse_score 1
+			*set worse_person "Jason"
+			*set worse_choice 1
+			*goto j1
+		*label j1
+		*return
+	#He is doing something unusual and which demonstrated a problem, and SEKA was right to flag his case as needing followup investigation. 
+		*set Jason_choice 2
+		*set boss_regard +1
+		*return
+	#He is doing something outside of the norm, but SEKA shouldn’t have flagged his case as needing followup investigation.
+		*set Jason_choice 3
+		*if worse_score = 0
+			*set worse_score 0
+			*set worse_person "Jason"
+			*set worse_choice 3
+			*goto j3
+		*label j3
+		*return
+	#He isn’t doing anything unusual, and SEKA shouldn’t have noticed him at all. 
+		*set Jason_choice 4
+		*set boss_regard -1
+		*if worse_score < 1
+			*set worse_score 1
+			*set worse_person "Jason"
+			*set worse_choice 4
+			*goto j4
+		*label j4
+		*return
+
+*label Monica
+*comment Monica T
+*if not(see_completion)
+	*page_break
+	You start walking over to Monica T’s work area. She’s a project manager for some of Ubiquity’s newer ventures.
+	*if read_Monica
+		You remember from her case record that she’s the one who missed report deadlines and stuffs her office with stuffed animals.
+		*goto mp1
+	*label mp1
+	A meeting is breaking up in the conference room, and as people file out, you see that the last person in the room is Monica. 
+	*gosub Monica_action
+	*return
+*else
+	*gosub Monica_action
+	*return
+	
+*label Monica_action
+*page_break
+*if not(see_completion)
+	What do you do first to investigate her? 
+	*goto Monica_choice
+*else
+	What do you do next?
+	*goto Monica_choice
+*label Monica_choice
+*choice
+	*disable_reuse #Approach her directly.
+		*set actions_left -1
+		*gosub Monica_interact
+		*set see_completion true
+		*return
+	*disable_reuse #Talk to her coworkers about her.
+		*set actions_left -1
+		*gosub Monica_rumor
+		*set see_completion true
+		*return
+	*disable_reuse #Flip through the binder for more archived records.
+		*set actions_left -1
+		*gosub Monica_history
+		*set see_completion true
+		*return
+	*disable_reuse #Perform divination.
+		*set actions_left -1
+		*gosub Monica_divination
+		*set see_completion true
+		*return
+	*if see_completion 
+		#Complete your report on her.
+			*set person_total +1
+			*gosub Monica_report
+			*set see_completion false
+			Your report on Monica is submitted!
+			*return
+
+*label Monica_interact
+You slip into the conference room and introduce yourself. How do you explain your errand?
+*set stat_check interaction + diligence
+*choice
+	#You were recommended to me as an example of a high achieving project manager. Do you have time to talk about how you succeed?
+		*gosub Monica_talk_low
+		*return
+	#I’m trying to understand more about how project managers at Ubiquity work. Do you have time to talk?
+		*gosub Monica_talk_mid
+		*return
+	#Ubiquity is studying productivity, and I need to do a quick assessment with you.
+		*gosub Monica_talk_mid
+		*return
+	#You don’t know me because I just started at Ubiquity. Can I ask you a few questions?
+		*if stat_check > 3
+			*gosub Monica_talk_high
+			*return
+		*else
+			*gosub Monica_talk_low
+			*return
+		
+*label Monica_talk_high
+Monica sets down her notebook. “Sure, I’d be happy to help. What do you want to know?”
+
+“When it comes to getting things done, what kinds of things slow you down or make your job harder?”
+*line_break
+“Really, sometimes the project deadlines and staffing plans handed to us are unrealistic, the project managers get stuck trying to make the team accomplish the impossible.”
+*line_break
+“That must be stressful, feeling like the schedule isn’t realistic and not being able to change it.”
+*line_break
+“Exactly. I’m actually considering going into business for myself, so I can have more control over setting goals.”
+*line_break
+“Wow, that’s great. What kind of business would you start?”
+*line_break
+“I’ve had a little side business on Etsy for a while, making custom stuffed animals that are dressed wearing animal versions of someone’s favorite outfit. It’s really started to take off, and it’s getting to the point where I can’t keep growing the business while doing my day job.”
+*line_break
+“Awesome, good luck with that.”
+*return
+
+*label Monica_talk_low
+Monica sets down her notebook. “Sure, I’d be happy to help. What do you want to know?”
+
+“When it comes to getting things done, what kinds of things slow you down or make your job harder?”
+*line_break
+“Sometimes, there are just too many competing demands. Every wants to ask me about something, and I need to help them, but then there isn’t enough time to do the reports. We’re supposed to write a formal report for every project every week, which is a lot when you’re managing five project.
+*line_break
+“Do you ever find that hobbies or things outside of work get pushed to the side in your life?”
+*line_break
+“I’d definitely like more time to work on hobby projects. Maybe once I retire!”
+*line_break
+“Thanks for talking to me”
+*return
+
+*label Monica_talk_mid
+Monica sets down her notebook. “Sure, I’d be happy to help. What do you want to know?”
+
+“When it comes to getting things done, what kinds of things slow you down or make your job harder?”
+*line_break
+“Really, sometimes the project deadlines and staffing plans handed to us are unrealistic, the project managers get stuck trying to make the team accomplish the impossible.”
+*line_break
+“That must be stressful, feeling like the schedule isn’t realistic and not being able to change it.”
+*line_break
+“Exactly. I’m actually considering going into business for myself, so I can have more control over setting goals.”
+*line_break
+“Wow, that’s great. What kind of business would you start?”
+*line_break
+“Maybe something with custom arts and crafts, like an Etsy store.”
+*line_break
+“Awesome, good luck with that.”
+*return
+
+*label Monica_rumor
+You follow one of Monica’s coworkers to his office. How do you explain your errand?
+*set stat_check rumor + diligence
+*choice
+	#You were recommended to me as an example of someone who understand how things work in this group. Do you have time to explain it?
+		*if stat_check > 3
+			*gosub Monica_rumor_talk
+			*return
+		*else
+			*gosub Monica_rumor_mid
+			*return
+	#I’m thinking of transferring, and wanted to know more about your group. Do you have time to talk?
+		*if stat_check > 3
+			*gosub Monica_rumor_talk
+			*return
+		*else
+			*gosub Monica_rumor_mid
+			*return
+	#Ubiquity is studying productivity, and I need to do a quick assessment with you.
+		*if stat_check > 3
+			*gosub Monica_rumor_talk
+			*return
+		*else
+			*gosub Monica_rumor_mid
+			*return
+	#I’ve been a little worried about one of your coworkers. Can I ask you some questions?
+		*if stat_check > 3
+			*gosub Monica_rumor_talk
+			*return
+		*else
+			*gosub Monica_rumor_refuse
+			*return
+
+
+*label Monica_rumor_talk
+“Sure, I’ve got a minute if you can be quick. What can I tell you?”
+
+“I was wondering if you ever noticed anything unusual with how Monica gets her work done.”
+*line_break
+“Oh, everyone knows she has a little side business making stuffed animals, so she’s usually at work 12 hours a day, but not always doing work for Ubiquity.”
+*return
+
+*label Monica_rumor_mid
+He shrugs. “I’ve got a minute, if your question isn’t too involved.”
+
+“I was wondering if you ever noticed anything unusual with how Monica gets her work done.”
+*line_break
+“Other than there being like a thousand stuffed animals in her office?”
+*line_break
+“I guess that’s pretty unusual.”
+*line_break
+“I don’t work with her that closely, but I know that she sends emails at all hours of the day or night. I’d like to help you more, but this isn’t a great time. Maybe stop by another day if you want to talk more.”
+*return
+
+*label Monica_rumor_refuse
+He looks at the clock. “I’d like to help, but this isn’t a great time, I’ve got a deadline today.”
+*return
+
+*label Monica_history
+*page_break
+*set stat_check history + diligence
+*if stat_check > 3
+	You see an agreement form between Ubiquity and Monica, acknowledging her copyright to the Mini-Me Stuffies, stuffed animals custom made as cute caricatures of their owners.
+	*return
+*else
+	You see Monica’s orginal job application, where she lists prior experience managing a fast food franchise, and working at a make-your-own-bear store.
+	*return
+
+*label Monica_divination
+*page_break
+*set stat_check soul
+You swirl and dump your Virtual Teacup, and the leaves clump into the shape of a knapsack.
+
+*if stat_check > 3 
+	[i]Looks like she’s busy with a financial venture, which could be a side business.[/i] 
+	*return
+*else
+	[i]A knapsack usually means the start of a journey. I wonder if she’s going to switch jobs.[/i]
+	*return
+*return
+
+*label Monica_report
+What do you decide about Monica T?
+*choice
+	#She is doing something bad, and SEKA was right to be suspicious.
+		*set Monica_choice 1
+		*set boss_regard +1
+		*return
+	#She is doing something unusual and which demonstrated a problem, and SEKA was right to flag her case as needing followup investigation. 
+		*set Monica_choice 2
+		*if worse_score = 0
+			*set worse_score 0
+			*set worse_person "Monica"
+			*set worse_choice 2
+			*goto m2
+		*label m2
+		*return
+	#She is doing something outside of the norm, but SEKA shouldn’t have flagged her case as needing followup investigation.
+		*set Monica_choice 3
+		*set boss_regard -1
+		*if worse_score < 1
+			*set worse_score 1
+			*set worse_person "Monica"
+			*set worse_choice 3
+			*goto m3
+		*label m3
+		*return
+	#She isn’t doing anything unusual, and SEKA shouldn’t have noticed her at all. 
+		*set Monica_choice 4
+		*if worse_score < 2
+			*set worse_score 2
+			*set worse_person "Monica"
+			*set worse_choice 4
+			*goto m4
+		*label m4
+		*set boss_regard -2
+		*return
+
+*label Tonya
+*comment Tonya S
+*if not(see_completion)
+	*page_break
+	It’s a short walk to Tonya S’s work area, where the software usability research group sits. 
+	*if read_Tonya
+		From her case record, you remember she’s the one who wows her boss and is some kind of Internet famous person.
+		*goto tp1
+	*label tp1
+	Her office is empty, but you see her talking with people around a white board. They finish their discussion. The others leave, but she stays to make a few more notes on the board. 
+	*gosub Tonya_action
+	*return
+*else
+	*gosub Tonya_action
+	*return
+
+*label Tonya_action
+*page_break
+*if not(see_completion)
+	What do you do first to investigate Tonya?
+	*goto Tonya_choice
+*else
+	What do you do next?
+	*goto Tonya_choice
+*label Tonya_choice
+*choice
+	*disable_reuse #Approach her directly.
+		*set actions_left -1
+		*gosub Tonya_interact
+		*set see_completion true
+		*return
+	*disable_reuse #Talk to her coworkers about her.
+		*set actions_left -1
+		*gosub Tonya_rumor
+		*set see_completion true
+		*return
+	*disable_reuse #Flip through the binder for more archived records.
+		*set actions_left -1
+		*gosub Tonya_history
+		*set see_completion true
+		*return
+	*disable_reuse #Perform divination.
+		*set actions_left -1
+		*gosub Tonya_divination
+		*set see_completion true
+		*return
+	*if see_completion 
+		#Complete your report on her.
+			*set person_total +1
+			*gosub Tonya_report
+			*set see_completion false
+			Your report on Tonya is submitted!
+			*return
+
+*label Tonya_interact
+You walk over to the whiteboard and introduce yourself. How do you explain your errand?
+*set stat_check interaction + diligence
+*choice
+	#You were recommended to me as an example of a high achieving project manager. Do you have time to talk about how you succeed?
+		*if stat_check > 3
+			*gosub Tonya_talk_high
+			*return
+		*else
+			*gosub Tonya_talk_mid
+			*return
+	#I’m trying to understand more about how usability researchers at Ubiquity work. Do you have time to talk?
+		*if stat_check > 3
+			*gosub Tonya_talk_high
+			*return
+		*else
+			*gosub Tonya_talk_mid
+			*return
+	#Ubiquity is studying productivity, and I need to do a quick assessment with you.
+		*if stat_check > 3
+			*gosub Tonya_talk_high
+			*return
+		*else
+			*gosub Tonya_talk_mid
+			*return
+	#You don’t know me, but I’m hiding from an annoying coworker. Can I sit in your office for a while?
+		*if stat_check > 3
+			*gosub Tonya_talk_mid
+			*return
+		*else
+			*gosub Tonya_talk_low
+			*return
+
+*label Tonya_talk_high
+Tonya nods. “Let’s go sit in my office for a minute. How can I help you?”
+
+You both sit in her office. Her desk is neat, and she has flowers on her desk. She’s also got a picture of herself as a teenager, shaking hands with a talk show host. 
+
+“In your experience, what are some things about the work environment, Ubiquity company rules, or human psychology that hurt productivity?”
+*line_break
+“Well, there are a million reasons for non-optimal productivity that are rooted in human psychology, like cognitive biases.”
+*line_break
+“Any particular phenomena that you find impacts your work at Ubiquity often?”
+
+She points to the picture. “This is funny, but also a little sad. When I was in high school, I posted a lot of videos about building LEGO models, and got to be kind of famous. It’s been years, but recently someone posted my work contact information on some old forums, and now I’m getting phone calls and emails from all these fans with detailed questions about things I can’t even remember. I really need Ubiquity to come up with a way to block these kinds of calls, without blocking people who need to talk to me for work.”
+*return			
+
+*label Tonya_talk_low
+Tonya nods. “Sure! I’m in meetings for the next hours, but help yourself.”
+
+You walk into her office. Her desk is neat, and she has flowers on her desk. She’s also got a picture of herself as a teenager, shaking hands with a talk show host. 
+*return
+
+*label Tonya_talk_mid
+Tonya nods. “Let’s go sit in my office for a minute. How can I help you?”
+
+You both sit in her office. Her desk is neat, and she has flowers on her desk. She’s also got a picture of herself as a teenager, shaking hands with a talk show host. The phone rings. 
+
+"I’d better get this.” 
+*line_break
+You smile and gesture for her to continue. 
+*line_break
+“Oh, I’m sorry, I can’t help you with that; I’m not supporting those old LEGO video instructions anymore. No, I don’t know whom else to call. Good luck with your project.”
+*line_break
+“Does that happen to you a lot?” you ask.
+*line_break
+“Unfortunately, yes.”
+*return
+
+*label Tonya_rumor
+You follow one of Tonya’s coworkers to her office. How do you explain your errand?
+*set stat_check rumor + diligence
+*choice
+	#You were recommended to me as an example of someone who understand how things work in this group. Do you have time to explain it?
+		*if stat_check > 3
+			*gosub Tonya_rumor_mid
+			*return
+		*else
+			*gosub Tonya_rumor_refuse
+			*return
+	#I’m thinking of transferring, and wanted to know more about your group. Do you have time to talk?
+		*if stat_check > 3
+			*gosub Tonya_rumor_mid
+			*return
+		*else
+			*gosub Tonya_rumor_refuse
+			*return
+	#Ubiquity is studying productivity, and I need to do a quick assessment with you.
+		*if stat_check > 3
+			*gosub Tonya_rumor_talk
+			*return
+		*else
+			*gosub Tonya_rumor_mid
+			*return
+	#I’ve been a little worried about one of your coworkers. Can I ask you some questions?
+		*if stat_check > 3
+			*gosub Tonya_rumor_talk
+			*return
+		*else
+			*gosub Tonya_rumor_mid
+			*return
+
+*label Tonya_rumor_talk
+“Sure, if you can be quick. What can I tell you?”
+
+“I was wondering if you ever noticed anything unusual about Tonya’s work routine?”
+*line_break
+“I don’t know how she does it, but she gets more done than anyone else in the group.”
+*line_break
+“She must be a very focused person.”
+*line_break
+“For sure. Even when she was a teenager, she was making these detailed online videos about LEGOs spaceships or something. People still track her down and bother her with questions about her designs.”
+*return
+
+*label Tonya_rumor_mid
+“Sure, if you can be quick. What can I tell you?”
+
+“She gets to work pretty early, compared to most of us. I think she likes to get an hour of uninterrupted work done before everyone else gets in!”
+*line_break
+“It can be good to have some uninterrupted time.”
+*line_break
+“Right, because everyone is always pestering her.”
+*return
+
+*label Tonya_rumor_refuse
+She looks at the clock. “Oh, I’m probably not the best person to talk about that kind of thing. Maybe you should talk to Tonya.”
+*return
+
+*label Tonya_history
+*page_break
+*set stat_check history + diligence
+*if stat_check > 3
+	You see a security report from Tonya, alerting the front desk to refuse visitors who want to talk to her about her old portfolio of LEGO videos.
+	*return
+*else
+	You see Tonya’s original employment application, listing scholarships and awards including Best Student Paper for “Frontiers of Video Blogs and Mobile Platforms”, a STEM education award for online videos inspiring an interest in engineering.
+	*return
+
+*label Tonya_divination
+*page_break
+*set stat_check soul
+You swirl and dump your Virtual Teacup, and the leaves clump into the shape of a Sun.
+
+*if stat_check > 3 
+	[i]She draws a lot of attention, but has nothing to hide. Doesn’t sound like she’s running any kind of shady business, but people might be pestering her.[/i] 
+	*return
+*else
+	[i]The Sun is usually a positive personality, so she’s probably not doing anything wrong.[/i]
+	*return
+*return
+
+*label Tonya_report
+What do you decide about Tonya S?
+*choice
+	#She is doing something bad, and SEKA was right to be suspicious.
+		*set Tonya_choice 1
+		*set boss_regard -1
+		*if worse_score < 1
+			*set worse_score 1
+			*set worse_person "Tonya"
+			*set worse_choice 1
+			*goto t1
+		*label t1
+		*return
+	#She is doing something unusual and which demonstrated a problem, and SEKA was right to flag her case as needing followup investigation. 
+		*set Tonya_choice 2
+		*set boss_regard +1
+		*return
+	#She is doing something outside of the norm, but SEKA shouldn’t have flagged her case as needing followup investigation.
+		*set Tonya_choice 3
+		*if worse_score = 0
+			*set worse_score 0
+			*set worse_person "Tonya"
+			*set worse_choice 3
+			*goto t3
+		*label t3
+		*return
+	#She isn’t doing anything unusual, and SEKA shouldn’t have noticed her at all. 
+		*set Tonya_choice 4
+		*set boss_regard -1
+		*if worse_score < 1
+			*set worse_score 1
+			*set worse_person "Tonya"
+			*set worse_choice 4
+			*goto t4
+		*label t4
+		*return
+
+*label Van
+*comment Van O
+*if not(see_completion)
+	*page_break
+	Van O’s office is in a central location. He’s the group’s administrative assistant, and sits in an open, airy lobby. 
+	*if read_Van
+		You remember from his case record that he’s the one obsessed with politics and statistics.
+		*goto vp1
+	*label vp1
+	You watch people walking through, seemingly in a hurry. Everyone waves to Van and smiles, but no one stops to talk. 	
+	*gosub Van_action
+	*return
+*else
+	*gosub Van_action
+	*return
+
+
+*label Van_action
+*page_break
+*if not(see_completion)
+	What do you do first to investigate Van?
+	*goto Van_choice
+*else
+	What do you do next?
+	*goto Van_choice
+*label Van_choice
+*choice
+	*disable_reuse #Approach him directly.
+		*set actions_left -1
+		*gosub Van_interact
+		*set see_completion true
+		*return
+	*disable_reuse #Talk to his coworkers about him.
+		*set actions_left -1
+		*gosub Van_rumor
+		*set see_completion true
+		*return
+	*disable_reuse #Flip through the binder for more archived records.
+		*set actions_left -1
+		*gosub Van_history
+		*set see_completion true
+		*return
+	*disable_reuse #Perform divination.
+		*set actions_left -1
+		*gosub Van_divination
+		*set see_completion true
+		*return
+	*if see_completion 
+		#Complete your report on him.
+			*set person_total +1
+			*gosub Van_report
+			*set see_completion false
+			Your report on Van is submitted!
+			*return
+
+*label Van_interact
+You walk over to Van’s desk and introduce yourself. How do you explain your errand?
+*set stat_check interaction + diligence
+*choice
+	#You were recommended to me as an example of a high achieving administrative assistant. Do you have time to talk about how you succeed?
+		*gosub Van_talk
+		*return
+	#I’m trying to understand more about how administrative assistants at Ubiquity work. Do you have time to talk?
+		*gosub Van_talk
+		*return
+	#Ubiquity is studying productivity, and I need to do a quick assessment with you.
+		*gosub Van_talk
+		*return
+	#You don’t know me, but I’m considering becoming an administrative assistant. Can I ask you about the job?
+		*gosub Van_talk
+		*return
+
+*label Van_talk
+Van points to a seat next to his. “The first thing you need to know is that my job at Ubiquity, like many other jobs anywhere, can be analyzed and the types of requests I get can be ranked by probability. Once I understand the probability distribution of different requests, I can optimize preparations and scheduling for high expected efficiency values.”
+
+You interrupt. “Have you found anything about the environment, people, or rules at Ubiquity that cuts down on your productivity?”
+*line_break
+“Of course, if the probability distribution was narrower, and there was less daily variability, I could probably optimize more. If I could convince the group that I’m supporting to make some travel booking requests only on Mondays, for example…”
+*line_break
+You interrupt again. “Any sorts of distractions give you trouble?”
+*line_break
+Van stops to consider. “I’ve been grappling with what I think will happen at the upcoming economic summit. Chances are low for an international agreement, but chances are high that the US and China will push for a delay in implementation for the…”
+
+A tall woman in a suit walks over. “Excuse me, Van, can I give you the innovations review meeting agenda for next week? We need to make sure that all the key presenters can make their slots, but they don’t all have to stay the whole time.”
+
+You wave at Van, and make your escape.
+*return
+
+*label Van_rumor
+You go over to the water cooler, where two people are talking about baseball. After the man leaves, how do you explain your errand to the woman remaining?
+*set stat_check rumor + diligence
+*choice
+	#Hi, I’m trying to understand how things work in this group. Do you have time to explain a little?
+		*if stat_check > 3
+			*gosub Van_rumor_mid
+			*return
+		*else
+			*gosub Van_rumor_refuse
+			*return
+	#I’m surveying people about administrative assistant support. Do you have time to talk?
+		*if stat_check > 3
+			*gosub Van_rumor_high
+			*return
+		*else
+			*gosub Van_rumor_refuse
+			*return
+	#Ubiquity is studying productivity, and I need to do a quick assessment with you.
+		*if stat_check > 3
+			*gosub Van_rumor_mid
+			*return
+		*else
+			*gosub Van_rumor_refuse
+			*return
+	#I’ve been a little worried about one of your coworkers. Can I ask you some questions?
+		*if stat_check > 3
+			*gosub Van_rumor_high
+			*return
+		*else
+			*gosub Van_rumor_refuse
+			*return
+
+*label Van_rumor_high
+“Sure thing. What can I tell you?”
+
+“I was wondering if you ever noticed anything unusual about Van’s work habits.”
+*line_break
+“He’s unusual in several ways.”
+*line_break
+“Do you think his interest in calculating probabilities is helpful or harmful in terms of doing his job?”
+*line_break
+“To be honest, it’s awkward to have a secretary whom everyone has to keep dodging conversations with. Plus, he’s always trying to convince people to join his online political predictions game, which is the most boring thing ever.
+*line_break
+“Sounds like you’ve seen what it’s about?”
+*line_break
+“Yeah, players basically bet on whether different things will happen or not, like the outcome of elections, but all kinds of minor stuff that no one really cares about.”
+*return
+
+*label Van_rumor_mid
+“I think there are a couple ways we could improve things around here. First of all, we need to have fewer required online training course.”
+
+“Yeah, I’ve heard that from some people. Do you have any thoughts about administrative assistants like Van?”
+*line_break
+“I don’t think there are any other administrative assistants like Van.”
+*line_break
+“Oh?”
+*line_break
+“He’s efficient, as long as you don’t get trapped talking to him, or let him show you his website.”
+*line_break
+“Then what?”
+*line_break
+“I hear from other folks that he’ll try to get you to work on political analysis or something.”
+*return
+
+*label Van_rumor_refuse
+“I’m new here, so probably not the right person to ask.”
+*return
+
+*label Van_history
+*page_break
+You see several letters from Van, suggesting ways Ubiquity could become more efficient
+
+*set stat_check history + diligence
+*if stat_check > 3
+	“As I said last year, I would be happy to set up a predictions market for internal use, where Ubiquity employees could wager on the outcomes of projects and initiatives. This kind of crowdsourced prediction could help us get early warning about efforts that are likely to fail. I’ve run this kind of service before, and could brief management about how it works.”
+	*return
+*else
+	“The are a number of inefficiencies caused by employees waiting until the last minute to submit requests to administrative assistants. If we set up an internal costs and incentives tracking system so that people would pay less for timely requests and more for urgent requests, we could use the power of economics to shape employee behaviors to facilitate efficiency.”
+	*return
+	
+*label Van_divination
+*page_break
+*set stat_check soul
+You swirl and dump your Virtual Teacup, and the leaves clump into the shape of a pair of dice.
+
+*if stat_check > 3 
+	[i]Taking wagers on the future. Looks like he’s playing the bookie.[/i] 
+	*return
+*else
+	[i]Rolling the dice. He might be gambling with his future?[/i]
+	*return
+*return
+
+*label Van_report
+What do you decide about Van 0?
+*choice
+	#He is doing something bad, and SEKA was right to be suspicious.
+		*set Van_choice 1
+		*set boss_regard +1
+		*return
+	#He is doing something unusual and which demonstrated a problem, and SEKA was right to flag his case as needing followup investigation. 
+		*set Van_choice 2
+		*set boss_regard -1
+		*if worse_score < 1
+			*set worse_score 1
+			*set worse_person "Van"
+			*set worse_choice 2
+			*goto v2
+		*label v2
+		*return
+	#He is doing something outside of the norm, but SEKA shouldn’t have flagged his case as needing followup investigation.
+		*set Van_choice 3
+		*set boss_regard -2
+		*if worse_score < 2
+			*set worse_score 2
+			*set worse_person "Van"
+			*set worse_choice 3
+			*goto v3
+		*label v3
+		*return
+	#He isn’t doing anything unusual, and SEKA shouldn’t have noticed him at all. 
+		*set Van_choice 4
+		*set boss_regard -2
+		*if worse_score < 2
+			*set worse_score 2
+			*set worse_person "Van"
+			*set worse_choice 4
+			*goto v4
+		*label v4
+		*return
+
+
+*label Zenina
+*comment Zenina B
+*if not(see_completion)
+	*page_break
+	Zenina works in Contracts, on the next-to-highest floor of the building.
+	*if read_Zenina	
+		You remember from her case record that she sounds like the helpful but potentially busybody type.
+		*goto zp1
+	*label zp1
+	Her team must be celebrating something, because they’re gathered around the kitchenette having cake. They finish and go back to their offices, but Zenina stays for a minute to wash up.
+	*gosub Zenina_action
+	*return
+*else
+	*gosub Zenina_action
+	*return
+
+*label Zenina_action
+*page_break
+*if not(see_completion)
+	What do you do first to investigate Zenina?
+	*goto Zenina_choice
+*else
+	What do you do next?
+	*goto Zenina_choice
+*label Zenina_choice
+*choice
+	*disable_reuse #Approach her directly.
+		*set actions_left -1
+		*gosub Zenina_interact
+		*set see_completion true
+		*return
+	*disable_reuse #Talk to his coworkers about her.
+		*set actions_left -1
+		*gosub Zenina_rumor
+		*set see_completion true
+		*return
+	*disable_reuse #Flip through the binder for more archived records.
+		*set actions_left -1
+		*gosub Zenina_history
+		*set see_completion true
+		*return
+	*disable_reuse #Perform divination.
+		*set actions_left -1
+		*gosub Zenina_divination
+		*set see_completion true
+		*return
+	*if see_completion 
+		#Complete your report on her.
+			*set person_total +1
+			*gosub Zenina_report
+			*set see_completion false
+			Your report on Zenina is submitted!
+			*return
+
+*label Zenina_interact
+You walk over and introduce yourself. How do you explain your errand?
+*set stat_check interaction + diligence
+*choice
+	#You were recommended to me as an example of a high achieving Contracts representative. Do you have time to talk about how you succeed?
+		*if stat_check > 3
+			*gosub Zenina_talk_high
+			*return
+		*else
+			*gosub Zenina_talk_low
+			*return
+	#I’m trying to understand more about how the Contracts department at Ubiquity works. Do you have time to talk?
+		*if stat_check > 3
+			*gosub Zenina_talk_high
+			*return
+		*else
+			*gosub Zenina_talk_low
+			*return
+	#Ubiquity is studying productivity, and I need to do a quick assessment with you.
+		*if stat_check > 3
+			*gosub Zenina_talk_high
+			*return
+		*else
+			*gosub Zenina_talk_low
+			*return
+	#You don’t know me, but I like cake. Can I ask you about your job?
+		*if stat_check > 3
+			*gosub Zenina_talk_high
+			*return
+		*else
+			*gosub Zenina_talk_low
+			*return
+
+*label Zenina_talk_high
+Zenina hands you a slice of cake. “What can I help you with?”
+
+“Do you ever find that for some reason, it’s hard to be productive here at Ubiquity?”
+*line_break
+“That’s my life! If it’s not a software upgrade changing all the menus, it’s someone from my church who needs a casserole and prayers.”
+*line_break
+“You must help a lot of people.”
+*line_break
+“That’s why I was put on this earth, so I do my best.”
+*line_break
+“What sorts of things seem like they help people the most?”
+*line_break
+“At Ubiquity, like everywhere else, everyone hates change. So I try to volunteer to be the guinea pig when software systems change. I’m not afraid to complain if the new system is bad, so they can fix it up before everyone else has to use it.”
+*line_break
+“Mmm hmm”
+*line_break
+“And this week is my turn to run the prayer chain group, so I Facebook or email with anyone who has requests, make sure the request are appropriate, write up a big list, and send it out to volunteers. You wouldn’t believe how many people need a little help, and how many willing volunteers there are.”
+*return
+
+*label Zenina_talk_low
+Zenina hands you a slice of cake. “What can I help you with?”
+
+“Do you ever find that for some reason, it’s hard to be productive at your job here at Ubiquity?”
+*line_break
+“Oh yes. If it’s not a software upgrade changing all the menus, it’s a youngster who needs advice or help. Such as yourself, for example!”
+*line_break
+“I appreciate your time.”
+*line_break
+“You might want to consider upgrading your shoes. Polished leather always looks professional.”
+*line_break
+“Uh, thank you.”
+*return
+
+*label Zenina_rumor
+You follow one of Zenina’s coworkers to his office. How do you explain your errand?
+*set stat_check rumor + diligence
+*choice
+	#You were recommended to me as an example of someone who understand how things work in Contracts. Do you have time to explain it?
+		*gosub Zenina_rumor_mid
+		*return
+	#I’m thinking of transferring, and wanted to know more about Contracts. Do you have time to talk?
+		*if stat_check > 3
+			*gosub Zenina_rumor_mid
+			*return
+		*else
+			*gosub Zenina_rumor_refuse
+			*return
+	#Ubiquity is studying productivity, and I need to do a quick assessment with you.
+		*if stat_check > 3
+			*gosub Zenina_rumor_high
+			*return
+		*else
+			*gosub Zenina_rumor_mid
+			*return
+	#I’ve been a little worried about one of your coworkers. Can I ask you some questions?
+		*gosub Zenina_rumor_mid
+		*return
+
+
+*label Zenina_rumor_high
+“Go ahead and ask. What can I tell you?”
+
+“I was wondering if you ever noticed anything unusual about Zenina’s work habits.”
+*line_break
+“She’s always patient and cheerful, even when the software is buggy. I’ve never heard her swear.”
+*line_break
+“She’s pretty good with technology?”
+*line_break
+“Yeah, she runs some parts of her church website, and she’s kind of our go-to person for software questions.”
+*return
+
+*label Zenina_rumor_mid
+“Sure, if it’s quick.”
+
+“I was wondering if you ever noticed anything unusual about Zenina’s work habits.”
+*line_break
+“She sometimes acts like a mother hen, but I think people get along with her.”
+*line_break
+“Does she do anything different with the computer than other people?”
+*line_break
+“I think she’s got her screensaver set to cycle through Bible verses, which doesn’t bother any of us.”
+*return
+
+*label Zenina_rumor_refuse
+“Honestly, I don’t think we have any openings. But I think Subcontracts needs someone.”
+
+*label Zenina_history
+*page_break
+You see a few more of Zenina's incoming emails.
+
+*set stat_check history + diligence
+*if stat_check > 3
+	“I’d like to ask people to pray for my son, who’s failing two classes.” 
+	*line_break
+	“Please find attached the draft contract for MC200045.” 
+	*line_break
+	“Mary and Lisa arrived back safely yesterday, thank you to everyone who prayed for their safe journey.”
+	*return
+*else
+	“Please find attached the draft contract for MC200045.” 
+	*line_break
+	“The rehearsal is canceled next week.” 
+	*line_break
+	“She’s been suffering with asthma since she was born, but it’s worse this year.”
+	*return
+
+*label Zenina_divination
+*page_break
+*set stat_check soul
+You swirl and dump your Virtual Teacup, and the leaves clump into the shape of a candle.
+
+*if stat_check > 3 
+	[i]She’s honest, caring, and helping people in need.[/i] 
+	*return
+*else
+	[i]Candles often mean someone is caring.[/i]
+	*return
+*return
+
+*label Zenina_report
+What do you decide about Zenina B?
+*choice
+	#She is doing something bad, and SEKA was right to be suspicious.
+		*set Zenina_choice 1
+		*set boss_regard -1
+		*if worse_score < 1
+			*set worse_score 1
+			*set worse_person "Zenina"
+			*set worse_choice 1
+			*goto z1
+		*label z1
+		*return
+	#She is doing something unusual and which demonstrated a problem, and SEKA was right to flag her case as needing followup investigation. 
+		*set Zenina_choice 2
+		*if worse_score = 0
+			*set worse_score 0
+			*set worse_person "Zenina"
+			*set worse_choice 2
+			*goto z2
+		*label z2
+		*return
+	#She is doing something outside of the norm, but SEKA shouldn’t have flagged her case as needing followup investigation.
+		*set Zenina_choice 3
+		*set boss_regard +1
+		*return
+	#She isn’t doing anything unusual, and SEKA shouldn’t have noticed her at all. 
+		*set Zenina_choice 4
+		*if worse_score < 1
+			*set worse_score 1
+			*set worse_person "Zenina"
+			*set worse_choice 4
+			*goto z4
+		*label z4
+		*set boss_regard -1
+		*return
+
+
+*label actions_done
+*if person_total < 5
+	Uh oh, it's almost 3pm. You have just enough time to jot down a decision for the rest of the suspects on your list.
+	*gosub finish_reporting
+	*finish
+*else
+	You head to your meeting with Margot and Rene.
+	*finish
+
+*label people_done
+*comment (If you finished before using all your actions) 
+*page_break
+You finished making your decision on all five suspects before 3pm. What do you do now?
+*choice
+	#Head back to the conference room early, in case Rene or Margot are there. 
+		*set boss_regard +1
+		*goto actions_done
+	#Stake out the cafeteria to try and overhear useful information. 
+		*set diligence +1
+		You sit down at the far end of the cafeteria with a cup of coffee, looking at a newspaper that someone left on the table. It’s long past lunchtime, so there are only a few clusters of employees. 
+	
+		“How was your weekend?” 
+		*line_break
+		“Eh, I had pager duty, so I ended up having to come in twice.” 
+		*line_break
+		“Oh yeah, there must be something going on with the network.” 
+		*line_break
+		“It’s always something, but things seemed extra frantic this time. I just wanted to be home watching a bunch of shows I recorded.” 
+		*page_break
+		*goto actions_done
+	#Divination to check the decisions you made.
+		*gosub summary_divination
+		*page_break
+		*goto actions_done
+
+*label summary_divination
+*page_break
+You take out your Virtual Teacup. Which of these people should I re-examine? 
+*temp redivine
+*set redivine worse_person&"_redivine"
+*gosub {redivine}
+*return	
+
+*label was_doing
+*if worse_choice = 1
+	*set doing_phrase "was doing something bad."
+	*return
+*if worse_choice = 2
+	*set doing_phrase "was doing something unusual that needed followup."
+	*return
+*if worse_choice = 3
+	*set doing_phrase "was doing something odd with no followup needed."
+	*return
+*if worse_choice = 4
+	*set doing_phrase "was acting completely normal."
+	*return
+
+*label None_redivine
+You swirl and dump your Virtual Teacup, and the leaves clump into the shape of the world. [i]The picture is complete and nothing should be added or removed. No need to re-examine anyone.[/i]
+*return
+	
+*label Jason_redivine
+*page_break
+You swirl and dump your Virtual Teacup, and the leaves clump into the shape of a perched crow. Jason is someone who complains a lot and people don’t like him, but he isn’t actually causing the problem. 
+
+You remember one phrase you saw in his case record, in a letter from Jason to his manager. “I am constantly interrupted by wrong number phone calls. On average, I get twenty calls per day asking for people I don’t even know.”
+
+*temp doing_phrase
+*gosub was_doing
+*if worse_score = 2
+	*set boss_regard +2
+	*goto jrecap
+*if worse_score = 1
+	*set boss_regard +1
+	*goto jrecap
+*label jrecap
+Previously, you decided that Jason L ${doing_phrase} You may re-evaluate that decision now.
+
+*gosub Jason_report
+*return
+ 
+*label Monica_redivine
+*page_break
+You swirl and dump your Virtual Teacup, and the leaves clump into the shape of a knapsack. Monica is seems busy with a financial venture, which could be a side business.
+
+You remember one phrase you saw in her case record, a comment from a coworker. “Her office is literally stuffed with stuffed animals.”
+
+*temp doing_phrase
+*gosub was_doing
+*if worse_score = 2
+	*set boss_regard +2
+	*goto mrecap
+*if worse_score = 1
+	*set boss_regard +1
+	*goto mrecap
+*label mrecap
+Previously, you decided that Monica T ${doing_phrase} You may re-evaluate that decision now.
+
+*gosub Monica_report
+*return
+
+*label Tonya_redivine
+*page_break
+You swirl and dump your Virtual Teacup, and the leaves clump into the shape of a Sun. Tonya draws a lot of attention, but has nothing to hide. Doesn’t sound like she’s running any kind of shady business, but people might be pestering her.
+
+You remember one phrase you saw in her case record, from an incoming email. “I hope you’ll write back, or start posting again! I miss your humor and flair for the ridiculous.”
+
+*temp doing_phrase
+*gosub was_doing
+*if worse_score = 2
+	*set boss_regard +2
+	*goto trecap
+*if worse_score = 1
+	*set boss_regard +1
+	*goto trecap
+*label trecap
+Previously, you decided that Tonya S ${doing_phrase} You may re-evaluate that decision now.
+
+*gosub Tonya_report
+*return
+
+*label Van_redivine
+*page_break
+You swirl and dump your Virtual Teacup, and the leaves clump into the shape of a pair of dice. Van is taking wagers on the future. Looks like he’s playing the bookie.
+
+ You remember one phrase you saw in his case record, from an incoming email. “Things are going to go crazy in Indonesia. I’ve put my money on a coup.”
+ 
+*temp doing_phrase
+*gosub was_doing
+*if worse_score = 2
+	*set boss_regard +2
+	*goto vrecap
+*if worse_score = 1
+	*set boss_regard +1
+	*goto vrecap
+*label vrecap
+Previously, you decided that Van O ${doing_phrase} You may re-evaluate that decision now.
+
+*gosub Van_report
+*return
+
+*label Zenina_redivine
+*page_break
+You swirl and dump your Virtual Teacup, and the leaves clump into the shape of a candle. Zenina’s honest, caring, and helps people in need.
+
+You remember one phrase you saw in her case record, from an incoming email. “I’d like to ask people to pray for my son, who’s failing two classes.”
+ 
+*temp doing_phrase
+*gosub was_doing
+*if worse_score = 2
+	*set boss_regard +2
+	*goto zrecap
+*if worse_score = 1
+	*set boss_regard +1
+	*goto zrecap
+*label zrecap
+Previously, you decided that Zenina B ${doing_phrase} You may re-evaluate that decision now.
+
+*gosub Zenina_report
+*return
+
+

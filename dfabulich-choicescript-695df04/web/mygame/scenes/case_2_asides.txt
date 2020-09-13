@@ -1,0 +1,167 @@
+*if skip
+	*finish
+Rene finishes reading first. $!{ihe} whistles and waves, leaving you and Margot in the conference room.
+
+Margot clears her throat.
+*if boss_regard < 4
+	“Remember, don’t jump to conclusions. If there’s a someone deliberately helping with these attacks, let’s nail them. But if there’s an innocent explanations, we’ll find it.”
+	
+	*goto Margot_aside
+*else
+	“Remember, don’t jump to conclusions. If there’s a someone deliberately helping with these attacks, let’s nail them. But if SEKA is the problem, let’s figure out how.”
+
+	*goto Margot_aside
+*comment (see case 2 suspects for outline of choice points)
+*label Margot_aside
+
+*if (case_2_goal = 3) and (A_choice = 1)
+	You agree with her, then change the subject.
+
+	“Margot, This a weird coincidence, but I actually know the person I’m supposed to investigate today.”
+
+	“I know, I saw you talking to him yesterday.”
+	*line_break
+	“I just feel like that could really get messy, since we’re friends. Could I switch with you?”
+	*line_break
+	“If you don’t think you can do a good investigation, we’d better switch.
+	*set A_choice 2
+	*if boss_regard < 4
+		If there’s someone at Ubiquity helping attackers break into our computer systems, we absolutely need to find them.”
+		*goto takeover
+	*else
+		There have been so many security breaches lately that we absolutely need to get to the bottom of it. If it’s an employee helping attackers, we need to catch them. If it’s some kind of side effect from SEKA, we’ve got to prove it.”
+		*goto takeover
+	*label takeover
+
+	“So you’ll take over Person A, and I can work on Person C?”
+	
+	“That’s fine. Whatever you do, don’t tip off your friend that he’s being investigated.”
+	*page_break
+	You switch binders with Margot.  
+	*goto read
+*label read
+You don’t need that long with the case records, since you read most of the material just yesterday.
+
+*if A_choice = 1
+	It’s strange to read through Jamie’s emails, especially the ones from Bobby. $!{eHe}’s dubious, then worried, then angry about some investments that Jamie sold ${ehis} parents. Strangely, the amount of his incoming and outgoing emails per day dropped dramatically recently.
+	*goto Margot_leaving
+*else
+	Person C turns out to be a company recruiter named Edgar Yee. You remember his solid work history and good coworker relationships, now threatened by a drinking problem. Flipping through the binder, you see typical parental emails to his kids, both in college, and knock-down-drag-out fights with his soon-to-be-ex wife. On a lighter note, it seems that his coworkers all enjoy the assorted swag and give-aways that he brings back from career fairs. 
+	*goto Margot_leaving
+
+*label Margot_leaving
+*page_break
+*if case_2_goal = 2
+	*if A_choice = 1
+		You figure you’ll go chat with Jamie before lunch.
+		*gosub Rene_aside
+		*finish
+	*else
+		You catch Margot’s eye as she stands up to leave. 
+
+		“I know you saw his name in my binder,” she says. “And you were talking to Jamie yesterday, so I assume you two know each other.”
+
+		“More than know each other,” you reply. “As of last night, we’re also housemates.”
+
+		“I imagine you’ll have some extra insight into his character and motivations.”
+		*choice
+			#Hint that you’d be willing to sneak a look into his room.
+			
+				“Definitely. Seeing where someone lives can tell you a lot about them.”
+			
+				“If I think there’s something he’s afraid to tell me, I may ask you to see what you can find out.”
+				*gosub Rene_aside
+				*finish
+			#Leave it to Margot to say what she wants you to do
+			
+				“Let me know how I can help.”
+		
+				“I’m not going to ask you to ransack his room, or anything inappropriate. But if I think there’s something he’s afraid to tell me, I may have you take a shot.”
+				*gosub Rene_aside
+				*finish
+*if case_2_goal = 1
+	*if A_choice = 1
+		You figure you’ll go chat with Jamie before lunch.
+		*gosub Rene_aside
+		*finish
+	*else
+		You figure you’ll go chat with Jamie before you start investigating Edgar.
+		*gosub Rene_aside
+		*finish
+*if case_2_goal = 4
+	*if A_choice = 1
+		You figure you’ll go chat with Jamie before lunch.
+		*gosub Rene_aside
+		*finish
+	*else
+		You’ll have time to talk to Jamie’s coworkers before you start investigating Edgar.
+		*gosub Rene_aside
+		*finish
+*if case_2_goal = 3
+	You’d better call Bobby before you start investigating Edgar.
+	*gosub Rene_aside
+	*goto Bobby_aside
+
+*label Rene_aside	
+*page_break
+Rene stops you as you pass by ${ihis} office.
+
+“You have to try one of these chocolate covered apricots from Turkey,” ${ihe} says. “Fortify yourself so you’ll be extra sharp when you go poking around today.”
+
+“It’s been interesting so far,” you say.
+
+“I think the tricky part is making a decision about whether SEKA was right or wrong to flag concern about a situation. I mean, you saw yesterday how there are so many well-intentioned employees, who find themselves in a messy situation through no fault of their own. The artificial intelligence is right to notice that kind of stuff, so Ubiquity can attention and help people like Tonya and Jason. Those are genuinely good situations for SEKA to flag.”
+
+“Sure.”
+
+“I know you and Margot both see how much SEKA can benefit Ubiquity, if we can just get it tuned up. Surely Margot wouldn’t be trying to use it to solve this security breach problem if she didn’t believe the software worked.”
+
+$!{ihe} offers you the dish of treats again.
+*choice
+	#Thank ${ihim} and bat your eyelashes
+		*set resist_colleague -1
+		*goto Rene_continue
+	#Smile and shake your head 
+		*goto Rene_continue
+
+*label Rene_continue
+“When we’re writing up our reports today, let’s keep teaching the artificial intelligence as much information about Ubiquity as fast as we can, but also just give it the benefit of the doubt when scoring whether SEKA was right to flag a situation.”
+
+*if resist_colleague < 0
+	You agree. SEKA does seem to mostly notice real issues.
+	
+	*goto Rene_agree
+*else
+	You agree to think it over. SEKA did seem to flag pretty reasonable situations overall.
+	
+	*goto Rene_agree
+*label Rene_agree
+*if (case_2_goal = 4) and (A_choice = 1)
+	“Of course, SEKA might also help us find someone who’s deliberately hurting Ubiquity,” you point out. 
+	*goto Rene_cont2
+*label Rene_cont2
+“Oh yes, and if you do find the person who’s been sabotaging Ubiquity’s computer system, management would be quite impressed. They’d probably give you a permanent position and end your probation period early. Good luck!”
+*return
+
+*label Bobby_aside
+*page_break
+You know Bobby doesn’t like to talk on the phone, but since ${ehe} dragged you to the coffee shop yesterday, you feel justified calling ${ehim} today. $!{ehe} answers on the first ring.
+
+“Look, I’m sorry Jamie was so set against me living with an ex, but I thought you came up with a great temporary solution, so let’s see how that goes.”
+
+“I’m not calling about the housemate situation! Here’s the story. I found out that something is going on at work, and they’re investigating Jamie. I’m not involved and I just don’t want you to get mad at me if it turns out they find some stuff.”
+
+“What? Is this about his investment pyramid scheme thing with Reliable Trust? He’s already got my parents losing money with his ridiculous investments. He told me he was going to keep it completely separate from work and not even pitch it to coworkers.”
+
+“I don’t know exactly what it’s about. But do you believe me? I’m not trying to mess things up for Jamie at work. I’m totally staying out of it.”
+
+“You shouldn’t stay out of it! You should help him.”
+
+“You just said he might be selling bogus investments to people. You want me to help?”
+
+“Not help him sell bad investments. I don’t know. Just make sure people understand that he’s not trying to rip anyone off. He honestly believes they’re great investments, and he’s not doing it at work anyways.”
+
+“I don’t know if I can do anything to help.”
+
+“Just promise you’ll try!”
+*finish

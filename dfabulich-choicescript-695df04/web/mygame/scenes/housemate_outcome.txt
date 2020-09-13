@@ -1,0 +1,107 @@
+*if skip
+	*finish
+*comment (check roommate relationship) (scale 0-4)
+*comment (if 1AC +2, if 4AC -4)
+*if boss_regard > 4
+	*comment (if win) 
+	Now that you know you’ll be going back to Ubiquity and working with Margot, you’d better get the housemate situation settled. 
+	*goto living_location
+*elseif boss_regard > 0
+	*comment (if survive or fail) 
+	At least you’ve still got a job. Once you pull yourself together, you’d better get the housemate situation settled. 
+	*goto living_location
+*else
+	What a mess. No job, no prospects. Still, you're no worse off than you were a week ago. Time to figure out the housemate situation. 
+*label living_location
+*if housemate_choice = 4
+	*comment (if at Jamie’s) 
+	Jamie’s condo is nice, but it’s weird being his houseguest. 
+	*goto housemate_resolution
+*else
+	*comment housemate_choice = 2
+	*comment (if all in apartment) 
+	The apartment’s too crowded with the three of you, and living with your ex and ${ehis} current boyfriend isn’t really ideal.
+	*goto housemate_resolution
+*label housemate_resolution
+*page_break
+The next day, 
+*if housemate_relationship > 4
+	*comment (if very positive)
+	you’re surprised to find Bobby making pancakes, and Jamie not around. 
+
+	“I think you were right,” ${ehe} says. “I probably should have told Jamie the whole story about you sooner.”
+
+	“I can see how it would be awkward to bring up.”
+
+	“I hate how he’s obsessed with investments and trying to get rich. He even thinks I should stop working with my parents and get a job at Ubiquity.”
+
+	“What do you want to do?”
+	*page_break
+	“Make you pancakes? Tell Jamie I’m in charge of my own life? Go back to us sharing an apartment and him living in his condo?”
+	*if housemate_choice = 4
+		*comment(if you’re at Jamie’s) 
+		
+		The two of you leave the dishes in his sink, then move Mischief and your things back to the apartment.
+		*finish
+	*else
+		*comment (if he’s at your place) 
+		
+		The two of you move Jamie’s things into the hallway and put your dining room back together before the pancakes get cold.
+		*finish
+	*finish
+*elseif housemate_relationship > 2
+	*comment (if moderately positive)
+	Jamie offers you some cereal when you come into the kitchen.
+
+	“I’m glad you’ll still be working at Ubiquity.”
+
+	“It’s definitely interesting.”
+
+	“Sorry about flipping out over the apartment situation. I know you’re not trying to make Bobby break up with me.”
+
+	“We’ve been friends a long time, but I don’t know if I’ve ever succeeded in making ${ehim} do anything.”
+	*page_break
+	“Right. And I like you and Mischief, but how about if we go back to you and Bobby in the apartment and me alone at my place.”
+	*if housemate_choice = 4
+		*comment(if you’re at Jamie’s) 
+		
+		You’ve got your things packed before leaving for work.
+		*finish
+	*else
+		*comment (if he’s at your place) 
+		
+		You help him get his things packed up before leaving for work.
+		*finish
+	*finish
+*else
+	you can't dodge the question anymore. 
+	*if case_2_accuse = "Jamie"
+		*comment (if negative or 0, you were 4AC)
+		You’re not sure if Jamie found out that you tried to blame him for security breaches at Ubiquity, but you’ve been avoiding him anyways. You haven’t talked to Bobby much either. 
+		*goto tough_chat
+	*else
+		You've been avoiding Jamie, and haven't talked to Bobby much either. 
+		*goto tough_chat
+	*label tough_chat
+
+	You see a note on your box of cereal when you come into the kitchen.
+	*if housemate_choice = 4
+		*comment (if you’re at his place) 
+
+		Casey - I don’t think this housemate situation is working out. Bobby’s going to move back in with ${ehis} parents to save money, so you’ll have to find another apartment. Can you be out of here by the end of the month?
+		*goto couchsurf
+	*else
+		*comment(if he’s at your place) 
+
+		Casey - I don’t think this housemate situation is working out. I’m going to move back in with my parents to save money, and Jamie’s going back to his place, so you’ll have to find another apartment. Can you be out of here by the end of the month?
+		*goto couchsurf
+	*label couchsurf
+	*page_break
+	[i]Oh great, I’m going to be couch surfing with a cat.[/i] 
+	*if boss_regard > 0
+		[i]I wonder if someone at Ubiquity is looking for a housemate.[/i]
+		*finish
+	*else
+		[i]Maybe it's time to move back in with Mom.[/i]
+		*finish
+	*finish
