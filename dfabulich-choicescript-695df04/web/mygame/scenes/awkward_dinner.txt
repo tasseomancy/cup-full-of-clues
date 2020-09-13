@@ -1,0 +1,73 @@
+*comment If previously [1] or [3], Bobby, Jamie, and you have an awkward dinner. 
+*comment You have to come out of it with either the idea that you and Mischief move in with Jamie, or he moves in with you and Bobby.
+*if skip
+	*finish
+*temp canoe_option
+*set canoe_option 0
+*if (housemate_choice = 2) or (housemate_choice = 4)
+	*goto recap_dinner
+*else
+	*goto dinner
+	
+*label dinner
+You meet Bobby and Jamie at a frozen yogurt shop, on the theory that it will be harder for everyone to get upset if you’re all eating dessert. Bobby explains that it won’t work for ${ehim} to move into Jamie’s condo because ${ehis} parents would be unhappy, but that the current situation with you and ${ehim} sharing an apartment makes Jamie unhappy.
+
+“You make it sound like one of those problems where you have a canoe that only holds one extra item and you need to get a sack of grain, a chicken, and a fox across the river,” Jamie says.
+
+“Exactly,” Bobby agrees. 
+
+“If I was solving that kind of problem, I’d have Jamie move into our apartment so I’m not alone with Bobby, or I’d move in with Jamie,” you suggest. 
+
+“You’re brilliant, Casey. I think either one of those ideas works,” Bobby says.
+
+“It would be a little silly to leave my place empty while we all crowd into your apartment,” Jamie says, taking you seriously.
+*page_break
+“Jamie already vetoed our current situation, and Bobby vetoed the two of you living together at Jamie's place. I’m the only one who didn’t get to veto anything yet, so I should get to pick,” you assert.
+
+Which do you pick?
+*choice
+	#You and Mischief will move in with Jamie.
+		You decide that you and your cat will be staying with Jamie, at least temporarily. You’ll keep splitting the apartment rent with Bobby, but you won’t pay Jamie anything.
+		*set canoe_option 1
+		*goto pack
+	#Jamie will move in with you and Bobby.
+		You decide that Jamie can sublet his place if he doesn’t want to leave it empty while he’s staying with you and Bobby, and suggest that you can turn the dining room into a third bedroom so the two of them don’t have to share.
+		*set canoe_option 2
+		*goto pack
+
+*label recap_dinner
+*if housemate_choice = 4
+	Bobby’s let Jamie know that you and Mischief will be staying with him, at least temporarily. You’ll keep splitting the apartment rent with Bobby, but won’t need to pay Jamie anything.
+	*goto pack
+*elseif housemate_choice = 2
+	Bobby’s let Jamie know that he can move in with the two of you. The plan will be to turn the dining room into a third bedroom.
+	*goto pack
+
+*label pack
+*page_break
+Bobby’s working late again tonight, so you and Jamie handle the moving without ${ehim}.
+
+*if (housemate_choice = 4) or (canoe_option = 1)
+	You throw a bunch of clothes into a suitcase, bribe Mischief to get into his cat carrier, and show up at Jamie’s condo. He’s cleared most of the stuff out of his home office, stacking it in a corner of the living room. Mischief knocks over that pile of papers and boxes, then claws at the couch. Hopefully the hassle of having you at his place will convince Jamie that he should just stop objecting to you and Bobby sharing the apartment!
+	*goto cat
+*elseif (housemate_choice = 2) or (canoe_option = 2)
+	You rig up a curtain for the doorway of the dining room and crowd the table and chairs awkwardly into a corner of the living room. It’s not elegant, but hopefully the crowding and hassle will convince Jamie that he should just stop objecting to you and Bobby sharing the apartment! Jamie shows up with a suitcase and some overflowing boxes. As soon as he stacks his stuff in a corner of the room, Mischief knocks it over.
+	*goto cat
+
+*label cat
+*page_break
+“Well, I’ve always wanted a cat,” Jamie says. “Now I’ll get to see what it’s like living with yours.”
+
+“If this whole things turns out to be a disaster, we can always figure out another plan later. I just can’t afford to get a new apartment and put down first and last month’s rent, not when I already owe Bobby for the last few months,” you say.
+
+Jamie heads out to his weekly poker game. “Don’t worry about that pile of stuff, I’ll deal with it when I get back.”
+
+What do you do?
+*choice
+	#You head for Jamie’s papers. It’s only polite to help tidy up, since your cat knocked things over.
+		*set snooped 1
+		Yeah, you’re being a snoop, but it’s all good practice for work, right? You see books on growing your career in management, a lot of financial reports on technology start-ups, a large stack of brochures from Reliable Trust advertising a new type of insurance investment plan that is “statistically superior to most 401K plans,” and an advertisement for diamond jewelry. 
+		*finish
+	#You need to get some real food. Donuts, granola bars, muffins, and frozen yogurt are all fine and good, but no one can live on dessert alone.
+		Frozen burritos might not be the best dinner, but it’s not like you have that many choices! 
+		*finish

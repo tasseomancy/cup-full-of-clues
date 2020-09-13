@@ -1,0 +1,16 @@
+*if skip
+	*finish
+You run into Jamie coming into the office. 
+
+“Swing by my office if you have questions or want to get lunch sometime,” he offers. 
+
+“I’m not sure how busy they’ll keep me today, but thanks.” 
+
+He makes a little bow. “It’s the least I could do, oh favored housemate of my amazing Bobby. Plus, I only get the full referral bonus if you make it past the trial period, so I have an ulterior motive for helping you.”
+
+“Not everyone would be so helpful to their ${egirlfriend}’s ex, even for a referral bonus!” you joke.
+*page_break
+Margot interrupts. “Casey, sorry, we need to start the meeting early. It’s urgent.” She drags you along behind her, talking quickly. 
+
+“I got paged last night. Been here since 5am looking at SEKA’s data dumps. Today’s going to be a doozy.”
+*finish
