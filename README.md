@@ -1,6 +1,6 @@
 # dreams-and-tea-leaves
-Interactive fiction using the Choice of Games engine
+DREAMS AND TEA LEAVES, mixes the art of divination with the science of corporate IT. In this interactive text game, you play a young person starting their first real job. Sure, there's a trial period, but working for the hottest new tech company, Ubiquity Incorporated should be a real resume booster (no need to mention that you only got the job thanks to your ex's current boyfriend). Use your new-found fortune-telling skills, your investigative intuition, and your powers of logical deduction to figure out what’s going wrong with the Ubiquity computer systems and collar the culprit.
 
-DREAMS AND TEA LEAVES, mixes the art of divination with the science of corporate IT. In this game, you play a young person who’s been given a shot at a job with the hottest new tech company, Ubiquity Incorporated, thanks to a favor from your ex’s current BF (how could that possibly go wrong?). Your challenge is to use your new-found fortune-telling skills, your investigative intuition, and your powers of logical deduction to figure out what’s going wrong with their computer systems and who (if anyone) is responsible.
+Made with the Choice of Games engine.
 
 Play a demo at: https://dashingdon.com/play/nuclearpolymer/dreams-and-tea-leaves/mygame/
