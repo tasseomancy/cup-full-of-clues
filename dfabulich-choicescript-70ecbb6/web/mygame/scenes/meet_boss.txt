@@ -1,0 +1,47 @@
+*if skip
+	*finish
+On Monday, you arrive at the Ubiquity’s local office, with no idea of what you’ll be doing. [i]No matter which group I get assigned to, a six month trial period at Ubiquity sounds a lot better than all my other non-existent job offers![/i]
+
+While the receptionist calls your new boss to tell her you’ve arrived, you sit down in the snazzy lobby and watch flames flicker in the gas fireplace. Your contemplations are interrupted by a woman arguing with someone on her cell phone. She stops in front of you and hangs up on whomever she’s talking to. She hasn’t stopped frowning, but nods at you.
+
+*page_break
+“You must be Casey Morganson. I’m Margot Lyles, and I’ll be your manager. Come on, we’re on the 7th floor. You can meet everyone at the team meeting in five minutes. Except there’s only one more person, other than the two of us, since my most experienced person is taking a sabbatical to ride his bike around the country. Bastard! That’s partly why we needed another person for the group. Though with the spike in our workload lately, we’d be stretched even if he was here.” 
+
+As you wait for the elevator, you:
+*choice
+	#Try making small talk with Margot.
+		*set boss_regard +1
+		*goto margot
+	#Look around at the other people.
+		*set diligence +1
+		*goto chatter
+	#Quickly give Virtual Teacup a try.
+		*goto divination
+	#Let your mind wander.
+		*goto wander
+
+*label margot
+At first, Margot responds to your questions with monosyllables, but by the time you get into the elevator, she’s become slightly more chatty. She takes a deep breath and manages a tight lipped smile. 
+
+“Sorry I’m so frazzled this morning. Welcome to Ubiquity, and I hope you won’t quit as soon as you find out what you’ll be doing! Like the last new person they gave me. Useless!”
+*finish
+
+*label chatter
+You figure you might pick up a work tip or two if you keep your ears open. You listen to a couple of men complaining about their computers while waiting for the elevator. 
+
+“Yeah, it keeps saying the disk is full, but that doesn’t make any sense. I’ve had IT come over to look at it twice this week, but as soon as they were there, I couldn’t get the error to happen again. I think it’s gremlins.”
+*finish
+
+*label divination
+You feel silly taking divination half-seriously, but you haven’t been able to come up with a scientific explanation for the ${dream_object} that materialized from your dream either. 
+
+You click on the Virtual Teacup app, jiggle your phone to give the tea leaves sitting at the bottom of the cup a swirl, then dump the dregs of tea out of the cup by turning your phone face down. [i]What should I expect today?[/i] 
+
+You look at the screen again to study the clump of virtual leaves stuck to the bottom of the virtual cup. It looks like a ring, or a zero, the symbol for potential. That symbol means that something’s ending and something else is beginning. [i]Right, stupid question. Mom always said ‘Ask a generic question, get a generic answer.’[/i]
+*finish
+
+*label wander
+[i]I guess I’ll be on a different floor than Jamie. I wasn’t sure about him when Bobby started going out with him. But he’s been cool with me, never even made a fuss about Bobby sharing an apartment with an ex-${pgirlfriend}. And he likes cats, so he’s been backing up my attempts to argue that Mischief isn’t really that much of a disaster for the apartment. I wonder if I’ll run into him much at work.[/i]
+*finish
+
+

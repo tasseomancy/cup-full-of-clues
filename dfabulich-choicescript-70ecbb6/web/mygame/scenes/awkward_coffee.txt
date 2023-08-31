@@ -1,0 +1,76 @@
+*if skip
+	*finish
+Your phone rings. It’s Bobby, who never calls.
+
+“Casey, we need to talk right away! Meet me at the coffee shop down the street in 15 minutes. It’s really important.”
+
+Before you can say anything, ${ehe} hangs up. You text ${ehim}, but ${ehe} doesn’t respond. You’ve got less than an hour before your meeting with Margot and Rene at 3pm.
+
+What do you do?
+*choice
+	#Go straight to the coffee shop. Bobby must be in trouble. 
+		*set boss_regard -1
+		You’re sure to annoy Margot if you’re late getting back, but Bobby wouldn’t be so insistent if it wasn’t an emergency.
+		*goto shop
+	#Tell Margot where you’re going. She’ll understand.
+		Margot isn’t thrilled, but since you’ve already written up summaries of your candidates, she says she won’t start calling to look for you until 3:30pm. 
+		*goto shop
+	#Ask Rene to cover for you if you’re late getting back. Maybe ${ihe} can just go first presenting ${ihis} assessments. 
+		*set resist_colleague -1
+		Rene agrees that you should go talk to your friend now, and assures you that he’ll smooth things over with Margot if you’re late to the meeting.
+		*goto shop
+
+*label shop
+*page_break
+Bobby’s waiting for you and doesn’t even let you order any coffee before pulling you into the back of the shop. 
+
+“Why did you tell Jamie that we used to date? Now he’s insisting that either I kick you out of our apartment or I move into his condo!”
+
+“I just assumed he knew. Were you trying to keep it a secret?”
+*line_break
+“Not exactly. Our history just never really came up.”
+*line_break
+“How could I never come up? He sees me around all the time. He helped me get a job interview at Ubiquity!”
+*line_break
+“He knows we’ve known each other a long time, he just didn’t know the details. We weren’t even dating that long, and you know I always thought it was a mistake to go out with a housemate.”
+*line_break
+“Are you saying I didn’t count because you never wanted to date me in the first place?”
+*line_break
+“Can we not have this argument for the millionth time about whether we’re just better as friends? We need to figure out who has to move out of our apartment!”
+*line_break
+“How about neither of us moves out of our apartment, and Jamie minds his own business about who you want to live with?”
+*line_break
+“You can’t say it’s unreasonable for him to care if I’m still living with an ex.”
+*line_break
+“If that’s what you think, why didn’t you tell him about us before?”
+
+*page_break
+After an hour of arguing, nothing is resolved. 
+
+[i]Feels like old times - this is exactly how it was back when we were dating![/i] 
+
+You tell Bobby that you have to get back to work, and ${ehe} asks what you want to do. You suggest that:
+*choice
+	#Bobby can stay at Jamie’s place for a while, to see if ${ehe} likes it.
+		*set housemate_choice 1
+		Bobby reminds you that ${ehe} works for ${ehis} parents, and that they would have a cow if ${ehe} moved in with ${ehis} boyfriend. Plus, ${ehe}’s not sure they’re really that serious yet, so ${ehe} doesn’t even want to live with Jamie. $!{ehe} decides that the two of you should both talk with Jamie tonight to figure out a solution.
+		*goto leave
+	#Bobby invites Jamie to move in with the two of you for a while, so he can tell that there’s really nothing going on between you and Bobby.
+		*set housemate_choice 2
+		*set housemate_relationship +1
+		Bobby hugs you and declares your idea to be brilliant. $!{ehe}’ll talk to Jamie about it right away.
+		*goto leave
+	#You can just camp out at work temporarily, until Jamie comes to his senses.
+		*set housemate_choice 3
+		Bobby is dubious that Ubiquity will let you do that, plus ${ehe} doesn’t want to be in charge of your cat while you’re not home. $!{ehe} decides that the two of you should both talk with Jamie tonight to figure out a solution.
+		*goto leave
+	#You and your cat can go stay with Jamie, until he gets sick of the idea.
+		*set housemate_relationship +1
+		*set housemate_choice 4
+		Bobby hugs you and declares your idea to be brilliant. $!{ehe}’ll talk to Jamie about it right away. 
+		*goto leave
+
+*label leave
+*page_break
+You rush back to work, bringing back coffee and muffins.
+*finish

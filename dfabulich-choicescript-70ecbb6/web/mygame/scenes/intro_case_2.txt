@@ -1,0 +1,42 @@
+*if skip
+	*finish
+Margot pulls you all the way into her office. 
+
+“Look, Ubiquity is always under attack by wannabe hackers and we have a whole full-time cyber security team. But the problem is that attacks and security breaches have been skyrocketing. We’ve had more problems just this last week than we normally have during two or three months.”
+
+Your first reaction is to:
+*choice
+	#Keep your mouth shut and nod.
+		*goto margot_explains
+	#Ask how you can help. 
+		“I’m getting to that part.” 
+		*goto margot_explains
+	#Make a suggestion. 
+		*set boss_regard -1
+		“I know you’re trying to help, but I’ve already thought of that, and it won’t work!”
+		*goto margot_explains
+
+*label margot_explains
+*page_break
+Margo continues. “Even though SEKA isn’t fully trained up yet, I want to use it to help find out if there’s someone on the inside gone wrong. I’m afraid someone working for Ubiquity is sabotaging security. So today, we’re looking for that kind of bad guy.”
+
+Rene knocks on her door. “Hi team! Ready to tackle today’s challenges?” $!{ihe} does a little dance on the way to the conference room.
+
+“We’ll be there in a minute. Casey can help me carry the binders.”
+
+*if boss_regard > 4
+	“Casey, don’t tell Rene, but I’m afraid there might be a connection with the SEKA rollout. The rate of attacks went through the roof as soon as Ubiquity installed SEKA. It’s a suspicious coincidence.”
+	*goto margot_phone
+*elseif boss_regard > 2
+	“I know you don’t have much experience investigating people, but you seem to have decent common sense. I’m less sure about Rene sometimes. Don’t necessarily give too much weight to what he tells you.”
+	*goto margot_phone
+*else
+	“Rene’s a nice guy, and I’m glad you’re hitting it off. Just FYI, according to the employee handbook, employees should let their managers know if they date anyone inside Ubiquity. But since ${ihe}’s a consultant from the SEKA company, ${ihe} wouldn’t be covered by that rule.”
+	*goto margot_phone
+
+*label margot_phone
+*page_break
+Margot’s phone rings. “Ugh, you go ahead, I’ll be right in.” 
+
+You walk slowly, and overhear Margot arguing with someone about how this week’s assignments are completely unreasonable.
+*finish

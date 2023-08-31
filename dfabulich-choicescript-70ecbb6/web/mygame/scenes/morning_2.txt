@@ -1,0 +1,60 @@
+*if skip
+	*finish
+By the time you collapse into bed, your head is spinning. 
+
+[i]Can we get SEKA adjusted before Ubiquity decides it’s making too many false alarms? What if I make mistakes investigating, and get the wrong employees in trouble? [/i] 
+*if boss_regard < 3
+	[i]Will Margot fire me before the end of my probation period?[/i]
+	*goto wake
+*label wake
+*page_break
+You jolt awake from a nightmare of drowning in a giant swirling teacup, despite Rene, Margot, Bobby, and Jamie all throwing life preservers at you. You couldn’t reach any of the floating rings because one of them kept hitting you in the head with their throws. 
+You shake off the dream.
+*set dream_2_description "[b]Dream #2[/b] I was drowning in a giant teacup, with everyone trying to throw me life preservers. I think someone was deliberately throwing them at my head." 
+*set show_dream_2 true
+
+It’s almost time to get ready for work. Do you:
+*choice
+	#Start the day with some divination.
+		You turn on the coffee pot and launch Virtual Teacup on your phone. What should I do different today at work? 
+		
+		*if boss_regard < 2
+			The leaves clump into the shape of a hammer. 
+			
+			[i]Great, a hammer means hard work and diligence.  Which is a little insulting as an answer to that question - I worked plenty hard yesterday! Maybe it means I should stop hitting myself over the head with a hammer? [/i]
+			*finish
+		*elseif resist_colleague < 2 
+			The leaves clump into the shape of a lopsided heart. 
+			
+			[i]Beware of inadvisable romance or relationship? I don’t think there’s much danger of that.[/i]
+			*finish
+		*else
+			The leaves clump up into the shape of hourglass. 
+			
+			[i]Work on time management. I guess that’s always good to keep in mind.[/i]
+			*finish		
+	#Make a good breakfast. 
+		*set housemate_relationship +1
+		You hand Bobby a plate with a fresh omelet as she walks into the kitchen. 
+		
+		“Ooh, that looks great, thanks!” $!{ehe} sits down with a big sigh. “Are you liking the job so far?”
+		*line_break
+		“Still trying to get the hang of it, but I’m just glad to finally be working. I should be able to pay you back for all the rent in a few months.”
+		*line_break
+		Bobby takes a big drink of coffee. “That’s great, since my parents might not be able to pay me this month.”
+		*line_break
+		“Crap, I’m sorry.”
+		*line_break
+		“We have a couple leads on new customers, but everyone’s worried.” 
+		
+		$!{ehe} throws you a couple granola bars. “If you aren’t going to have time for lunch, you’d better carry provisions.”
+		*finish
+	#Flip through Ubiquity’s employee handbook 
+		*set boss_regard +1
+		*set diligence +1
+		The Ubiquity employee handbook almost puts you back to sleep. There are over a hundred chapters on everything from selecting  professional attire to guidance for politely refusing bribes from foreign governments. You note that the Ubiquity corporate computer policy advises employees that all actions on the job may be monitored and analyzed. You also see that employees are not permitted to run commercial businesses or other activities involving financial transactions using company computers. 
+		
+		[i]Monica and Van must have ignored the handbook, probably like almost every other employee at Ubiquity.[/i] 
+		
+		There’s also an extensive section on IT security guidelines to protect computers from viruses and malware.
+		*finish

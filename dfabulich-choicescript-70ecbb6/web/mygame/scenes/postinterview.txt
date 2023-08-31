@@ -1,0 +1,66 @@
+*if skip
+	*finish
+That evening, you and your housemate (and ex-${egirlfriend}), Bobby, take turns microwaving frozen burritos. $!{ehe} looks about as tired as you feel.
+
+“So…do you think you’ll get the job?” ${ehe} asks. “Jamie tried to put in a good word for you.”
+
+After almost a year of job hunting, applying to every open position you could find, you can’t help being jealous. Jamie had offers from all the hottest technology companies, including Ubiquity, before graduation. Bobby was working in ${ehis} family’s import business. You, on the other hand, with a degree in modern literature and work experience doing tarot card readings for gullible tourists, had not gotten a single offer.
+
+*choice
+	#“I appreciate his help. And thank you for suggesting it to him in the first place; I know he wasn’t sure there’d be anything I could do at a place like Ubiquity. Most people wouldn't see anything in my work history that's a match, but I can pick out a thread.” 
+		*set history +1
+		*set housemate_relationship +1
+		“I think you’ll be great at whatever job you get.” Bobby gives you a quick hug. “If my parents’ company was doing better, they’d hire you in a minute.”
+		*goto lastjob
+	#“I hope so! I’m so nervous. I couldn’t really figure out what kinds of ‘special talents’ Ubiquity was looking for. Maybe fortune telling!”
+		*set soul +1
+		“You can probably figure it out as you go along.” Bobby says.
+		*goto lastjob
+	#“I guess I’ll find out in a week or so. But hey, what about you? How was your day?”
+		*set interaction +1
+		*set housemate_relationship +1
+		Bobby sighs. “Things at my parents’ company aren’t looking so good. If we can’t find some new customers soon, my whole family might be looking for different jobs soon.”
+
+		“I hope it works out,” you say. “Your parents made it through the last recession.” 
+		
+		$!{ehe} nods.
+		*goto lastjob
+	#“I’ve heard Ubiquity’s pretty selective and everyone comes away thinking they failed the interview. I've been reading the online rumor mill forums.”
+		*set rumor +1
+		“I know Jamie was convinced he’d bombed it,” Bobby says. “And you’re right, a lot of his co-workers thought the same thing, too.”
+		*goto lastjob
+
+*label lastjob
+
+You sigh.
+
+“Maybe they won’t try calling my references. My Mom’s going to be out of touch all month, and my former boss at that frozen yogurt cafe isn’t my biggest fan.”
+
+“You never told me what went wrong at the frozen yogurt place,” Bobby says.
+*choice
+	#"Oh, it’s not a very interesting story."
+		*set housemate_relationship -1
+		*goto miffed
+	#"Well, it wasn’t a great moment, but I threw a coffee mug at my boss."
+		*set boss_regard -1
+		*goto eyeroll
+	#"I was younger and dumber, and partied all night a few times. Which wouldn’t have been so bad, except I kept falling asleep at work"
+		*set diligence -1
+		*goto eyeroll
+	#"I had a fling with a coworker and it got messy."
+		*set resist_colleague -1
+		*goto eyeroll
+
+*label eyeroll
+Bobby rolls ${ehis} eyes. “Classy all the way, huh? Hope you won't have a repeat of that.” “It was a long time ago! Before college!” you offer.
+*page_break
+*goto bed
+
+*label miffed
+Bobby starts to clean up. “Oh, and Casey…can you figure out how to get your cat to stop shredding my couch?” 
+*page_break
+*goto bed
+
+*label bed
+Lying in bed, you can’t stop wondering. [i]What if I don’t get this job? How am I going to pay Bobby back for the last three month’s rent? Maybe I don’t have any marketable talents and should just move back in with Mom, and join her bogus fortune telling business.[/i]
+*finish
