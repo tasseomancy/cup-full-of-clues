@@ -37,7 +37,9 @@ Margot left you a sticky note in the first binder.
 *temp actions_taken
 *set actions_taken 0
 *temp section_1
+*set section_1 "annual_reviews"
 *temp section_2
+*set section_2 "peer_ratings"
 *temp next_part
 
 *page_break
@@ -180,16 +182,16 @@ It’s going to be hard to figure out the real story behind this would-be invest
 
 The leaves in your Virtual Teacup take the shape of:
 
-*if soul > 3
+*if soul > 2
 	A fulcrum, the balance point for a scale. This person faces a temptation, but has not yet made a decision.
 	*gosub A_decide
 	*return
-*elseif (history > 3) or (rumor > 3)
+*elseif (history > 2) or (rumor > 2)
 	A coin. This person is attracted to the high life.
 	*gosub A_decide
 	*return
 *else
-	*comment presumably your interaction > 3
+	*comment presumably your interaction > 2
 	A mask. This person is worried about reputation and appearing successful.
 	*gosub A_decide
 	*return
@@ -259,16 +261,16 @@ It’s going to be hard to figure out the real story behind this engineer with a
 
 The leaves in your Virtual Teacup take the shape of:
 
-*if soul > 3
+*if soul > 2
 	A mule. This person instinctively resists and opposes.
 	*gosub B_decide
 	*return
-*elseif (interaction > 3) or (rumor > 3)
+*elseif (interaction > 2) or (rumor > 2)
 	A sword. This person is often the center of conflict and strife.
 	*gosub B_decide
 	*return
 *else
-	*comment presumably you are > 3 in history
+	*comment presumably you are > 2 in history
 	A shoe. This person moves from place to place, and will not settle down. 
 	*gosub B_decide
 	*return
@@ -290,7 +292,7 @@ What do you decide about Person B?
 *label C_annual_reviews
 The manager reviews are mixed: 
 
-“Person C has a solid record over the many years since he came here from EV3, but his performance this year has been uneven.” 
+“Person C has a solid record over the many years since he came here from Panoptican-Do, but his performance this year has been uneven.” 
 
 “Person C is well-regarded by colleagues, but several recent unexplained absences put unnecessary pressure on the team to cover for him at the last minute.” 
 
@@ -336,16 +338,16 @@ It’s going to be hard to figure out the real story behind this recruiter with 
 
 The leaves in your Virtual Teacup take the shape of:
 
-*if (soul > 3) or (rumor >3)
+*if (soul > 2) or (rumor > 2)
 	A manacle and chain. This person is at the mercy of external influences.
 	*gosub C_decide
 	*return
-*elseif interaction > 3
+*elseif interaction > 2
 	A cup lying on its side. This person will disappoint others.
 	*gosub C_decide
 	*return
 *else
-	*comment presumably you are > 3 in history
+	*comment presumably you are > 2 in history
 	An egg. This person protects his children. 
 	*gosub C_decide
 	*return

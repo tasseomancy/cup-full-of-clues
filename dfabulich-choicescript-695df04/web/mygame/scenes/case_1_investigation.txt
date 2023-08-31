@@ -2,7 +2,7 @@
 	*finish
 
 *temp actions_left
-*set actions_left 10
+*set actions_left 15
 *temp person_total 
 *set person_total 0
 *temp see_completion
@@ -16,6 +16,7 @@
 *comment  For each person, there will be 4 possible things to do, for a total of 20 possible things. 
 *comment If you read all the files or did Divination, you can do a total of 10 things now. 
 *comment If you picked randomly, you can do a total of 12 things now. 
+*comment 5/25/2022 upped the total to be 15 or 17
 *comment The 4 things per person will be: (1) Divination (2) Talk to person (3) Talk to coworkers (4) Flip through archived records)
 *comment go through the people in order until you run out of time.
 
@@ -32,7 +33,8 @@ You cross your fingers and begin your investigations.
 *comment check total
 *if actions_left = 0
 	*goto actions_done
-*if (actions_left = 6) and show1
+*comment upped this to 9/15 rather than 6/10
+*if (actions_left = 9) and show1
 	*set show1 false
 	Time flies! You’ve spent 2 hours so far, there's only 3 hours left to finish your investigations. 
 	*if person_total < 2
@@ -41,11 +43,13 @@ You cross your fingers and begin your investigations.
 	*else
 		Making good progress - you’re on track to finish all five investigations by 3pm!
 		*goto continue_investigate
-*if (actions_left = 4) and show2
+*comment upped this to 6/15 rather than 4/10
+*if (actions_left = 6) and show2
 	*set show2 false
 	It’s clear that you’re not going to have time for lunch today, but you press on. It would be great to impress your new boss on your first day!
 	*goto continue_investigate
-*if (actions_left = 2) and show3
+*comment upped this to 3/15 rather than 2/10
+*if (actions_left = 3) and show3
 	*set show3 false
 	You’ve got one more hour before 3pm to make up your mind about the five people on your list. You wonder what Rene and Margot found out!
 	*goto continue_investigate
@@ -193,7 +197,7 @@ Jason looks at the clock. “Sorry, this isn’t a good time, I’ve got a deadl
 *return
 
 *label Jason_rumor
-After the coworker finishes his conversation with Jason, you follow him to his office. How do you explain your errand?
+After the coworker finishes his conversation with Jason, you follow him to his office. How do you explain your errand and fish for rumors?
 *set stat_check rumor + diligence
 *choice
 	#You were recommended to me as an example of someone who understand how things work in this group. Do you have time to explain it?
@@ -240,7 +244,7 @@ He looks at the clock. “I’d like to help, but this isn’t a great time, I�
 *label Jason_history
 *page_break
 *set stat_check history + diligence
-You see several letters from Jason complaining about his office space, coworkers, and general working conditions.
+You scan the records and several letters from Jason catch your eye. He complains about his office space, coworkers, and general working conditions.
 
 *if stat_check > 3
 	“I am constantly interrupted by wrong number phone calls. On average, I get twenty calls per day asking for people I don’t even know. I think a coworker must have circulated my number as a prank.”
@@ -1036,7 +1040,7 @@ What do you decide about Van 0?
 		*gosub Zenina_interact
 		*set see_completion true
 		*return
-	*disable_reuse #Talk to his coworkers about her.
+	*disable_reuse #Talk to her coworkers about her.
 		*set actions_left -1
 		*gosub Zenina_rumor
 		*set see_completion true
@@ -1375,7 +1379,7 @@ Previously, you decided that Tonya S ${doing_phrase} You may re-evaluate that de
 *page_break
 You swirl and dump your Virtual Teacup, and the leaves clump into the shape of a pair of dice. Van is taking wagers on the future. Looks like he’s playing the bookie.
 
- You remember one phrase you saw in his case record, from an incoming email. “Things are going to go crazy in Indonesia. I’ve put my money on a coup.”
+You remember one phrase you saw in his case record, from an incoming email. “Things are going to go crazy in Indonesia. I’ve put my money on a coup.”
  
 *temp doing_phrase
 *gosub was_doing

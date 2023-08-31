@@ -110,7 +110,7 @@ Rene stops you as you pass by ${ihis} office.
 
 “It’s been interesting so far,” you say.
 
-“I think the tricky part is making a decision about whether SEKA was right or wrong to flag concern about a situation. I mean, you saw yesterday how there are so many well-intentioned employees, who find themselves in a messy situation through no fault of their own. The artificial intelligence is right to notice that kind of stuff, so Ubiquity can attention and help people like Tonya and Jason. Those are genuinely good situations for SEKA to flag.”
+“I think the tricky part is making a decision about whether SEKA was right or wrong to flag concern about a situation. I mean, you saw yesterday how there are so many well-intentioned employees, who find themselves in a messy situation through no fault of their own. The artificial intelligence is right to notice that kind of stuff, so Ubiquity can pay attention and help people like Tonya and Jason. Those are genuinely good situations for SEKA to flag.”
 
 “Sure.”
 

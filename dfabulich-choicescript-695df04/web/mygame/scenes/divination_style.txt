@@ -43,7 +43,7 @@ The golden bell swings easily in your hand, like it was waiting for you. The sou
 Along the bottom edge of the bell, you see an inscription: “Rumors are siblings to the truth. Listen for them.”
 *set dream_1_description dream_1_description&"bell. When I rang it, I heard whispers and someone told me that 'rumors are siblings to the truth.' The really weird thing is that when I woke up, the bell was real."
 *gosub wake
-...the golden bell, standing right next to your phone.
+...the golden bell, standing right next to your phone. You have an irrational feeling that you can magically find out the truth by listening for rumors.
 *goto phone
 
 *label soul
@@ -54,7 +54,7 @@ As you watch, the one face beams at you. Another looks surprised. One cries sile
 
 Around the edge of the mirror, you see an inscription: “Glimpses of soul bring insight. Look for them.”
 *gosub wake
-...the antique bronze mirror, lying right next to your phone.
+...the antique bronze mirror, lying right next to your phone. You have an irrational feeling that you can magically use divination to see people's true selves.
 *goto phone
 
 *label interaction
@@ -63,7 +63,7 @@ The bowl is cold and your hands shake as you lift it closer to your face. You sm
 
 Around the rim of the bowl, you see an inscription: “Conversation leads to answers. Ask questions when you need information.”
 *gosub wake
-...the now empty crystal bowl, sitting next to your phone.
+...the now empty crystal bowl, sitting next to your phone. You have an irrational feeling that you can magically ask people direct questions and get honest answers.
 *goto phone
 
 *label history
@@ -80,9 +80,9 @@ A college student carefully tucks the bunny into a laptop bag.
 
 The people change in each scene, but the bunny looks the same.
 
-You almost drop the stuffed bunny when it wiggles its nose and speaks. “The past leads to the present and future. You’ll understand when you know what came before.”
+You almost drop the stuffed bunny when it wiggles its nose and speaks. “The past leads to the present and future. You’ll understand what will be once you know what came before.”
 *gosub wake
-...the stuffed bunny, lying motionless on your bed. You never had a stuffed bunny, but here it is, clearly well-loved, with the soft fabric nearly worn through.
+...the stuffed bunny, lying motionless on your bed. You never had a stuffed bunny, but here it is, clearly well-loved, with the soft fabric nearly worn through. You have an irrational feeling that you can magically pick out the right information from archives and records.
 *goto phone
 
 *label wake

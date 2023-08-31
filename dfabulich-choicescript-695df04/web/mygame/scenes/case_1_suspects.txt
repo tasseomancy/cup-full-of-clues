@@ -19,7 +19,7 @@ The door bangs open and Margot staggers in, holding a thick stack of three-ring 
 
 *label brief
 *page_break
-“Today, we’re trying to tune SEKA’s ability to understand whether someone is running an illicit business while they’re on the job. SEKA has flagged fifteen Ubiquity employees as behaving suspiciously. We’ll need to investigate them, figure out if they’re doing anything wrong, and then adjust SEKA so it’ll handle this topic better in the future. Each of us will examine five case studies." 
+“Today, we’re trying to tune SEKA’s ability to understand whether someone is running an illicit business while they’re on the job. SEKA has flagged fifteen Ubiquity employees as behaving suspiciously. We’ll need to investigate them, figure out if they’re doing anything wrong, and then adjust SEKA so it’ll handle this topic better in the future. Each of us will examine five cases." 
 
 "Take five binders, skim the info, and prioritize the least suspicious people first, since those might be the cases where SEKA made the biggest mistakes. Come back here by 3pm with your decisions on each case, whether you had time to interview everyone or not. We’ll input our corrections into SEKA together.”
 
@@ -36,7 +36,7 @@ You start flipping through one of the binders which contains records for [b]Jaso
 		[i]It’s kind of hard-core to set up your guild raid at 11pm, but not super hard-core if people in your guild are letting work interfere with previously scheduled raids![/i]
 
 *page_break
-You look up. Margot and Rene are also flipping through binders. “Any instructions for how should I investigate people?”
+You look up. Margot and Rene are also flipping through binders. “Any instructions for how I should investigate people?”
 
 “Take 30 minutes to skim the files so you can start with the least suspicious individuals. Since we’re correcting SEKA, we need to be able to tell it how it went wrong. So try to understand why it flagged each person and decide if SEKA was right." 
 
@@ -158,7 +158,7 @@ Your attention is caught by one phrase in particular:
 		
 *label other_files
 *page_break
-You pick up the second case file for [b]Zenina B[/b].  
+You remind yourself that this is a grown-up job and you need to be diligent. You pick up the second case file for [b]Zenina B[/b].  
 *set read_Zenina true
 
 Your attention is caught by one phrase in particular:

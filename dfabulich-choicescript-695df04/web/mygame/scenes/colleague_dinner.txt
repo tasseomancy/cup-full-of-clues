@@ -100,7 +100,7 @@ The restaurant is crowded, but you and Rene are ushered to seats at a table in t
 
 “It must be interesting working with all the different customer companies to get SEKA trained up right,” you say.
 
-“It’s so different at each customer site. Margot, and Ubiquity, have been great. She really understand the SEKA system, and why it’s necessary to do a lot of manual investigation in the beginning, to tune the artificial intelligence. I just hope she doesn’t quit before the SEKA rollout project is finished.”
+“It’s so different at each customer site. Margot, and Ubiquity, have been great. She really understands the SEKA system, and why it’s necessary to do a lot of manual investigation in the beginning, to tune the artificial intelligence. I just hope she doesn’t quit before the SEKA rollout project is finished.”
 *line_break
 “How long does the tuning take?
 *line_break

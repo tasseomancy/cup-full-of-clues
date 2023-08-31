@@ -7,16 +7,16 @@ That evening, you and your housemate (and ex-${egirlfriend}), Bobby, take turns 
 After almost a year of job hunting, applying to every open position you could find, you can’t help being jealous. Jamie had offers from all the hottest technology companies, including Ubiquity, before graduation. Bobby was working in ${ehis} family’s import business. You, on the other hand, with a degree in modern literature and work experience doing tarot card readings for gullible tourists, had not gotten a single offer.
 
 *choice
-	#“I appreciate his help. And thank you for suggesting it to him in the first place; I know he wasn’t sure there’d be anything I could do at a place like Ubiquity.” 
+	#“I appreciate his help. And thank you for suggesting it to him in the first place; I know he wasn’t sure there’d be anything I could do at a place like Ubiquity. Most people wouldn't see anything in my work history that's a match, but I can pick out a thread.” 
 		*set history +1
 		*set housemate_relationship +1
 		“I think you’ll be great at whatever job you get.” Bobby gives you a quick hug. “If my parents’ company was doing better, they’d hire you in a minute.”
 		*goto lastjob
-	#“I hope so! I’m so nervous. I couldn’t really figure out what kinds of ‘special talents’ Ubiquity was looking for.”
+	#“I hope so! I’m so nervous. I couldn’t really figure out what kinds of ‘special talents’ Ubiquity was looking for. Maybe fortune telling!”
 		*set soul +1
 		“You can probably figure it out as you go along.” Bobby says.
 		*goto lastjob
-	#“I guess I’ll find out in a week or so. How was your day?”
+	#“I guess I’ll find out in a week or so. But hey, what about you? How was your day?”
 		*set interaction +1
 		*set housemate_relationship +1
 		Bobby sighs. “Things at my parents’ company aren’t looking so good. If we can’t find some new customers soon, my whole family might be looking for different jobs soon.”
@@ -25,7 +25,7 @@ After almost a year of job hunting, applying to every open position you could fi
 		
 		$!{ehe} nods.
 		*goto lastjob
-	#“I’ve heard Ubiquity’s pretty selective and everyone comes away thinking they failed the interview.”
+	#“I’ve heard Ubiquity’s pretty selective and everyone comes away thinking they failed the interview. I've been reading the online rumor mill forums.”
 		*set rumor +1
 		“I know Jamie was convinced he’d bombed it,” Bobby says. “And you’re right, a lot of his co-workers thought the same thing, too.”
 		*goto lastjob
@@ -52,7 +52,7 @@ You sigh.
 		*goto eyeroll
 
 *label eyeroll
-Bobby rolls ${ehis} eyes. “Classy all the way, huh?” “It was a long time ago! Before college!” you offer.
+Bobby rolls ${ehis} eyes. “Classy all the way, huh? Hope you won't have a repeat of that.” “It was a long time ago! Before college!” you offer.
 *page_break
 *goto bed
 

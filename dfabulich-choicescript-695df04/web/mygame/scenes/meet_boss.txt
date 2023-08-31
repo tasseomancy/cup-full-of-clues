@@ -5,7 +5,7 @@ On Monday, you arrive at the Ubiquity’s local office, with no idea of what you
 While the receptionist calls your new boss to tell her you’ve arrived, you sit down in the snazzy lobby and watch flames flicker in the gas fireplace. Your contemplations are interrupted by a woman arguing with someone on her cell phone. She stops in front of you and hangs up on whomever she’s talking to. She hasn’t stopped frowning, but nods at you.
 
 *page_break
-“You must be Casey Morganson. I’m Margot Lyles, and I’ll be your manager. Come on, we’re on the 7th floor. You can meet everyone at the team meeting in five minutes. Except there’s only more person other than the two of us, since my most experienced person is taking a sabbatical to ride his bike around the country. Bastard! That’s partly why we needed another person for the group. Though with the spike in our workload lately, we’d be stretched even if he was here.” 
+“You must be Casey Morganson. I’m Margot Lyles, and I’ll be your manager. Come on, we’re on the 7th floor. You can meet everyone at the team meeting in five minutes. Except there’s only one more person, other than the two of us, since my most experienced person is taking a sabbatical to ride his bike around the country. Bastard! That’s partly why we needed another person for the group. Though with the spike in our workload lately, we’d be stretched even if he was here.” 
 
 As you wait for the elevator, you:
 *choice
@@ -27,7 +27,7 @@ At first, Margot responds to your questions with monosyllables, but by the time 
 *finish
 
 *label chatter
-You listen to a couple of men complaining about their computers while waiting for the elevator. 
+You figure you might pick up a work tip or two if you keep your ears open. You listen to a couple of men complaining about their computers while waiting for the elevator. 
 
 “Yeah, it keeps saying the disk is full, but that doesn’t make any sense. I’ve had IT come over to look at it twice this week, but as soon as they were there, I couldn’t get the error to happen again. I think it’s gremlins.”
 *finish

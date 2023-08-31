@@ -2,7 +2,7 @@
 	*finish
 If you weren’t so desperate to finally land a job, you wouldn’t be here with your cheek muscles sore from a day of fake-smiling. [i]Surely they won’t keep asking questions all night, will they?[/i]
 
-The neatly dressed representative from Ubiquity’s human resources department looks at the clock and closes her notebook. “I’ll just remind you that you signed an agreement before this interview that you will not disclose any privileged information about Ubiquity and our operations. You need to be especially vigilant about spies from our main competitor, Everything Everywhere for Everyone, otherwise known as EV3. We have to take security very seriously here.”
+The neatly dressed representative from Ubiquity’s human resources department looks at the clock and closes her notebook. “I’ll just remind you that you signed an agreement before this interview that you will not disclose any privileged information about Ubiquity and our operations. You need to be especially vigilant about spies from our main competitor, Panoptican-Do. We have to take security very seriously here.”
 
 You put on your very serious face and reassure her that you understand. 
  
@@ -28,22 +28,22 @@ You put on your very serious face and reassure her that you understand.
 
 *label interaction
 
-“Ubiquity is always looking for people with the right talents. If you are selected and decide to join, that’s when you’ll be matched with a specific job opening. No one finds out about their first assignment until they start, because we want the kind of team members who are willing to pitch in wherever they can make the biggest contribution at Ubiquity.” 
+“Nice direct question! Ubiquity is always looking for people with the right talents. If you are selected and decide to join, that’s when you’ll be matched with a specific job opening. No one finds out about their first assignment until they start, because we want the kind of team members who are willing to pitch in wherever they can make the biggest contribution at Ubiquity.” 
 *goto byebye
 
 *label history
 
-“You’ll hear from us in a week. We don’t interview for a specific job opening, so if a candidate is found to have the right talents, that’s when we’ll match them to a group where they can make the biggest contribution at Ubiquity.”
+“According to past records, you can expect to hear from us in a week. We don’t interview for a specific job opening, so if a candidate is found to have the right talents, that’s when we’ll match them to a group where they can make the biggest contribution at Ubiquity.”
 *goto byebye
 
 *label soul
 
-“Ubiquity is such an exciting place to work! Since successful candidates are matched to the group where they can make the biggest contribution, everyone has a chance to use and grow their unique talents.”
+“You might be seeing the future! Ubiquity is such an exciting place to work. Since successful candidates are matched to the group where they can make the biggest contribution, everyone has a chance to use and grow their unique talents.”
 *goto byebye
 
 *label rumor
 
-She shakes your hand, thanks you for your time, and drops you off at the bathroom in the lobby. As you’re washing you hands, you overhear someone talking. 
+She shakes your hand, thanks you for your time, and drops you off at the bathroom in the lobby. As you’re washing you hands, you overhear someone talking, and your ears prick up to listen for rumors. 
 
 “Yeah, the first week here is crazy. Since Ubiquity assigns you to a group after you get hired, it’s this big surprise what your first job assignment turns out to be. They decided I’d be a great fit for marketing, even though I’d never done it before.”
 *finish

@@ -1,7 +1,7 @@
 *comment Copyright 2016 by Alice Leung
-*comment 
+*comment A Cup of Clues
 
-*title Dreams and Tea Leaves
+*title A Cup of Clues
 *author nuclearpolymer
 *scene_list
 	interview
@@ -130,7 +130,7 @@
 *create dream_4_description ""
 *create dream_5_description ""
 
-Welcome to Dreams and Tea Leaves!
+Welcome to A Cup of Clues!
 
 Will you bet on the ancient art of divination, your powers of logical deduction, or your intuitive understanding of human nature? Pick wisely! You've got just a few days to prove yourself as an elite techno-investigator for Ubiquity Incorporated.
 
